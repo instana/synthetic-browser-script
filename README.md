@@ -98,22 +98,24 @@ yarn add -D @instana/synthetic-browser-script
 Synthetic-browser-script comes with useful command line options and a few examples, which are automatically copied to `node_modules/@instana/synthetic-browser-script/examples` during installation and can also be used as boilerplate to write your own tests on top of them.
 
 You can run `--help` and follow the instructions given at the console output
-```javascript
-npx synb --help
+```bash
+synb --help
 ``` 
 
-Use CLI `npx synb` to execute. 
+Use CLI `synb` to execute. 
 Use `-b` to specify the browser type (chrome is by default without this option).
 Use `-f` to specify the entry point of the javascript test scripts. 
 
-```javascript
+```bash
+# copy examples
 cp -r node_modules/@instana/synthetic-browser-script/examples .
 
-npx synb --enableRecording -b chrome -f examples/bundledscripts/mytest.js
+# run bundled browser test scripts
+synb -b chrome -f examples/bundledscripts/mytest.js
 ```
 
 Execution logs will be shown in console output. 
-All the test results including HAR file, videos, screenshots, browser log can be found in the parent folder of your test script.
+All the test results including HAR file, videos, screenshots, browser log can be found in the same directory of your test script.
 
 
 ## Licence
