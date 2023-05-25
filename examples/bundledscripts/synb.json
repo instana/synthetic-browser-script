@@ -1,0 +1,11 @@
+{
+  "synthetic": {
+    "pop": "beijing",
+    "timeZone": "GMT",
+    "labels": {
+      "env": "local",
+      "region": "global"
+    },
+    "description": "Instana browser test"
+  }
+}

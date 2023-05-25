@@ -1,0 +1,94 @@
+{
+  "name": "@instana/synthetic-browser-script",
+  "version": "1.0.1",
+  "description": "",
+  "main": "dist/sbs-playback.js",
+  "typings": "dist/src/main.d.ts",
+  "files": [
+    "package.json",
+    "yarn.lock",
+    "synb.js",
+    "dist/sbs-playback.js",
+    "dist/src/main.d.ts",
+    "dist/src/network.d.ts",
+    "dist/src/runoption.d.ts",
+    "dist/src/reporter.d.ts",
+    "dist/src/user",
+    "dist/src/bhelper",
+    "dist/src/common/his-entry.d.ts",
+    "dist/src/sandbox-scripts/host-jest/event.d.ts",
+    "dist/bridge.js",
+    "dist/events.js",
+    "dist/setup-node-sandbox.js",
+    "dist/setup-sandbox.js",
+    "examples",
+    "LICENSE",
+    "README.md"
+  ],
+  "bin": {
+    "synb": "./synb.js"
+  },
+  "scripts": {
+    "test": "synb --help"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:instana/synthetic-browser-script.git",
+    "baseUrl": "https://github.com/instana/synthetic-browser-script"
+  },
+  "keywords": [
+    "synthetic",
+    "instana"
+  ],
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "homepage": "https://github.com/instana/synthetic-browser-script#readme",
+  "author": {
+    "name": "Instana Inc",
+    "email": "support@instana.com"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.317.0",
+    "@cucumber/cucumber": "7.3.2",
+    "atob": "^2.1.2",
+    "basic-ftp": "^4.6.3",
+    "btoa": "^1.2.1",
+    "chai": "^4.3.4",
+    "colors": "^1.4.0",
+    "consoleplusplus": "^1.4.4",
+    "crypto-js": "^4.0.0",
+    "expect": "^27.5.1",
+    "faker": "^5.5.2",
+    "got": "^12.6.0",
+    "jest-circus": "27.5.1",
+    "joi": "^17.7.1",
+    "js-yaml": "^4.1.0",
+    "ldapauth-fork": "^5.0.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "net-snmp": "^3.5.2",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
+    "protocol-buffers": "^4.2.0",
+    "q": "^1.5.1",
+    "re2": "^1.17.4",
+    "selenium-webdriver": "4.0.0",
+    "ssh2-sftp-client": "^7.0.0",
+    "ssl-checker": "^2.0.7",
+    "text-encoding": "^0.7.0",
+    "thrift": "^0.14.1",
+    "tough-cookie": "^4.0.0",
+    "underscore": "^1.13.1",
+    "url-parse": "^1.5.9",
+    "urllib": "^2.37.4",
+    "uuid": "^3.3.2",
+    "validator": "^13.7.0",
+    "webdriverio": "^7.25.4",
+    "ws": "^7.5.5",
+    "xml2js": "^0.5.0"
+  }
+}
