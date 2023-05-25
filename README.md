@@ -1,8 +1,9 @@
 # Instana Synthetic Browser Script
 
-[![Node Support](https://img.shields.io/badge/node-16.x-brightgreen.svg)](https://www.npmjs.com/package/%40instana/synthetic-api-script)
+[![Node Support](https://img.shields.io/badge/node-16.x-brightgreen.svg)](https://www.npmjs.com/package/%40instana/synthetic-browser-script)
 [![Selenium Support](https://img.shields.io/badge/selenium-4.x-brightgreen.svg)](https://www.selenium.dev/selenium/docs/api/javascript/module/selenium-webdriver/lib/webdriver_exports_WebDriver.html)
-[![Banner](docs/imgs/sbs-banner.png)](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/overview/)
+
+[![Banner](doc/imgs/sbs-banner.png)](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/overview/)
 
 #### [Homepage](https://www.ibm.com/docs/en/instana-observability/current?topic=instana-synthetic-monitoring-open-beta) &bullet; [Developer Guide](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/browser_script/) &bullet; [API Reference](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/browser_api_reference/) &bullet;
 
@@ -13,11 +14,11 @@ This is a local runner can accelerate your Synthetic browser testing on-boarding
 💡 "code completion" or "code hinting" in VS Code for all the browser testing APIs<br>
 💡 open full browser to perform my test actions to convince me of the quality of my scripts<br>
 💡 reproduce my test failures locally to help me debug root cause<br>
-💡 a bunch of examples to demonstrate how to use browser testing APIs thus I can write my own ones on top of them
+💡 examples to demonstrate how to use browser testing APIs thus I can write my own ones on top of them
 
 [Synthetic-browser-script](https://github.com/instana/synthetic-browser-script/tags) is now available in the public NPM channel.
 
-Supported runtime
+**Supported runtime**
 
 Chromium, Mozilla Firefox, Node.js runtime.
 
@@ -26,11 +27,10 @@ Chromium, Mozilla Firefox, Node.js runtime.
 ☑️ Node.js v16.x<br>
 ☑️ selenium-webdriver v4.0.0
 
-## 🚀 Get started in 60 seconds
 
-### Pre-requisite
+## 🍀 Pre-requisite
 
-#### Install Node.js Server
+#### 1. Install Node.js Server
 
 You can use [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) to install Node.js if you don't have one.
 
@@ -42,7 +42,7 @@ nvm install 16.15.1
 node --version
 v16.15.1
 ```
-#### Install Browser Drivers
+#### 2. Install Browser Drivers
 
 All the driver implementations are provided by the browser vendors themselves.
 Make sure you get the correct version of driver for your browser. 
@@ -74,7 +74,9 @@ To quick start, you only need to install latest Chrome driver. Firefox is option
     ChromeDriver 102.0.5005.61
     ```
 
-### 1. Install Synthetic-browser-script from NPM
+## 🚀 Get started in 60 seconds
+
+#### 1. Install Synthetic-browser-script from NPM
 
 Initialize a new project with default values if you don't have one:
 ```bash
@@ -91,27 +93,13 @@ npm install @instana/synthetic-browser-script --save-dev
 yarn add -D @instana/synthetic-browser-script
 ```
 
-### 2. Run a Demo Test
+#### 2. Run a Demo Test
 
 Synthetic-browser-script comes with useful command line options and a few examples, which are automatically copied to `node_modules/@instana/synthetic-browser-script/examples` during installation and can also be used as boilerplate to write your own tests on top of them.
 
 You can run `--help` and follow the instructions given at the console output
 ```javascript
 npx synb --help
-Options:
-    --help             Show help                                     [boolean]
-    --version          Show version number                           [boolean]
-    -f, --file         run test script
-                                [string] [default: "./user-script/index.js"]
-    -b, --browser      chrome|firefox             [string] [default: "chrome"]
-    --enableRecording  whether to enable recording true|false
-                                                    [boolean] [default: false]
-    --loglevel         user script console log level, ["debug", "log", "info",
-                        "warn", "error"]             [string] [default: "log"]
-    --winsize          window size                      [string] [default: ""]
-    --delay            delay metric collector       [boolean] [default: false]
-    --url              url for ping test                [string] [default: ""]
-    --side             run selenium side script     [boolean] [default: false]
 ``` 
 
 Use CLI `npx synb` to execute. 
@@ -126,8 +114,6 @@ npx synb --enableRecording -b chrome -f examples/bundledscripts/mytest.js
 
 Execution logs will be shown in console output. 
 All the test results including HAR file, videos, screenshots, browser log can be found in the parent folder of your test script.
-
----
 
 
 ## Licence
