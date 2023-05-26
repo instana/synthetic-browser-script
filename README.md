@@ -117,6 +117,115 @@ synb -b chrome -f examples/bundledscripts/mytest.js
 Execution logs will be shown in console output. 
 All the test results including HAR file, videos, screenshots, browser log can be found in the same directory of your test script.
 
+## 🌟 Test with CLI
+#### Test with CLI Options
+Create a folder for your test scripts and use `-f, --file` to specify the entry point of the test scripts. The test results will be put in the same folder. Synthetic-browser-script comes with examples of [different browser test types](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/overview/#new-synthetic-test-types) as `Browser Script`, `Selenium IDE Script`, `single` or `bundled` script in `node_modules/@instana/synthetic-browser-script/examples`. Will take them as examples. For the examples with proxy demonstration as `examples/browserscripts/api-sample-proxy.js` and `examples/side/api-sample-browserapi.side`, you need to change the proxy to the valid one before running it. 
+
+* **Example #1:** Use `synb --help` to check all the CLI options. 
+
+* **Example #2:** Execute browser script test
+    
+    Instana Synthetic browser testing supports Selenium based APIs, and additional more than 30 extended browser testing APIs. Refer to [Browser Testing API](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/browser_api_reference/) reference for useful browser testing APIs. The examples in `examples/browserscripts` demonstrate how to use these APIs. Run a demo test as below. `--delay` `--loglevel` are optional. `--delay` can make test fast by delaying cleanup work. `--loglevel` can set user log level. 
+
+    ```bash
+    synb -f examples/browserscripts/api-sample-actions.js --delay --loglevel error
+    ```
+
+* **Example #3:** Execute multiple browser scripts
+    
+    If the business logic is really complex, containing everything in a single script is a bad experiences for developers, multiple script files are also supported for better management, especially managing them in Git repo. You can use bundled scripts and use `-f` to point the entry point. 
+    
+    In this example `examples/bundledscripts`, we use multiple scripts and `$synthetic` global object to demonstrate how to write complex test scripts.
+    The `$synthetic` object's properties can be accessed by user scripts. 
+    And `$synthetic.labels` can be defined as `"customProperties"` in Synthetic test.
+    
+    In your local test env, you can define `examples/bundledscripts/synb.json` to mockup these variables for test purpose. 
+    You can also put it in parent path in your project root directory.
+    
+    ```bash
+    synb -f examples/bundledscripts/mytest.js
+    ```
+
+* **Example #4:** Execute selenium IDE scripts
+
+    The easiest way to create your own scripts is to use Selenium IDE to record and Synthetic-browser-script to playback.
+    1. Download and install Selenium IDE [Firefox addon](https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/versions/) or [Chrome extension](https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd) in Firefox/Chrome browser. Restart the browser.
+   
+    2. Open Selenium IDE from the menu bar. 
+    Click `Record a new test in a new project` link in the open-up window, and follow the instructions to record a script.
+    When Selenium IDE is recording, it generates a command for each user action in a script.
+
+    3. After recording, save the script into a **.side** file.
+
+    4. You can add commands e.g. `assert title`, or test your script with `run` button.
+        ![selenium-side](doc/imgs/selenium-command.png)
+
+    5. Playback with Synthetic-browser-script to test.
+        
+        Why can not playback with Selenium IDE directly? Instana Synthetic provides more advanced Browser Testing APIs which can not be supported by Selenium IDE. If you are using them, you can playback with Synthetic-browser-script. Further more, usually you have cookies or cache in your browser, unless you clean them from browser settings, you will not see prompt windows as end users. Thus it is recommended to playback with Instana Synthetic-browser-script.
+        ```
+        synb --side -f examples/side/search-instana.side
+        ```
+
+* **Example #5:** Execute [Jest](https://github.com/facebook/jest) framework-based browser scripts
+    
+    Some developers use Jest or have steps in browser test. You can use `"scriptType": "Jest"` in your Synthetic test configuration. And use `--jest` to test with Synthetic-browser-script.
+    
+    ```bash
+    synb --jest -f examples/jest/myjest.js
+    ```
+
+    You can see the test results.
+    ```bash
+    PASS  /home/lijing/instana-dev/synthetic-browser-script/examples/jest/myjest.js
+    my jest test
+      ✓ step1: test myBeverage
+      ✓ step2: test search engine (7.17 s)
+
+    Tests:       2 passed, 2 total
+    ```
+
+#### Use Proxy in Local ENV
+How can I set a proxy for my local test? You can use environment variables if you do not want to change your scripts.
+```bash
+export PLAYBACK_PROXY_TYPE="manual"
+export PLAYBACK_PROXY_HOST_PORT="hostname:8080"
+```
+Then you can see the logs:
+```bash
+2023-05-26T05:29:22Z [SyntheticPoP] [INFO]  manual proxy config {"proxyType":"manual","ftpProxy":"xxxx:8080","httpProxy":"xxxx:8080","sslProxy":"xxxxx:8080"}
+```
+
+#### Create Synthetic Test
+After test with CLI, you can use [Instana Synthetic Open APIs](https://instana.github.io/openapi/#operation/createSyntheticTest) to create Synthetic test in Instana. 
+Use `"syntheticType": "BrowserScript"` for [Browser Script](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/browser_script/) test or `"syntheticType": "WebpageScript"` for [Selenium IDE Script](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/browser_script/) test.
+Use `"script"` for [single test script](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/overview/#single-browser-testing-script), or `"scripts"` for [bundled scripts](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/overview/#bundled-browser-testing-scripts).
+`"retries"` and `"recordVideo"` will only retry or capture video on test failures after you change the default value.
+<details>
+<summary>Example: Instana browser script test</summary>
+
+    ```json
+    {
+        "label": "BrowserTesting_Search_Engine",
+        "description": "browser multiscripts test",
+        "active": true,
+        "testFrequency": 10,
+        "playbackMode": "Simultaneous",
+        "locations": [
+            "minikube_PoP_saas_instana_test"
+        ],
+        "configuration": {
+                "script": "escaped script",
+                "syntheticType": "BrowserScript",
+                "browser": "chrome",
+                "timeout" : "5m",
+                "retries" : 0,
+                "retryInterval": 10,
+                "recordVideo": false
+        }
+    }
+    ```
+</details>
 
 ## Licence
 [MIT](https://github.com/instana/synthetic-browser-script/blob/main/LICENSE)
