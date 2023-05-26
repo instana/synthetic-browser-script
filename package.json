@@ -29,7 +29,8 @@
     "synb": "./synb.js"
   },
   "scripts": {
-    "test": "synb --help"
+    "test": "synb --help",
+    "start": "synb --file examples/bundledscripts/mytest.js"
   },
   "publishConfig": {
     "access": "public"

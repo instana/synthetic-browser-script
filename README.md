@@ -227,5 +227,58 @@ Use `"script"` for [single test script](https://pages.github.ibm.com/instana/ins
     ```
 </details>
 
+## 🚤 Develop in IDE
+Launch Visual Studio Code with `code .` in your project directory which already set up above. 
+You can develop your browser script tests in Visual Studio Code with "code completion" or "code hinting" feature for all the browser testing APIs.
+
+* Workspace in VS Code
+    ![vscode-project](doc/imgs/vscode-project.png)
+
+* VS Code IntelliSense for Browser Testing
+    ![vscode-intelli](doc/imgs/vscode-hinting.png)
+
+## 🎯 Debugging with VS Code
+    
+![vscode-debug](doc/imgs/vscode-debug.png)
+
+.vscode/launch.json
+```JSON
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "yarn start",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["start"],
+      "port": 5858,
+      "cwd": "${workspaceRoot}",
+      "timeout": 10000
+    }
+  ]
+}
+```
+
+package.json
+```JSON
+{
+  "name": "browser-local-runner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "synb --file examples/bundledscripts/mytest.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@instana/synthetic-browser-script": "^1.0.1",
+    "@types/jest": "^29.0.0"
+  }
+}
+```
+
 ## Licence
 [MIT](https://github.com/instana/synthetic-browser-script/blob/main/LICENSE)
