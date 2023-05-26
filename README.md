@@ -204,27 +204,27 @@ Use `"script"` for [single test script](https://pages.github.ibm.com/instana/ins
 <details>
 <summary>Example: Instana browser script test</summary>
 
-    ```json
-    {
-        "label": "BrowserTesting_Search_Engine",
-        "description": "browser multiscripts test",
-        "active": true,
-        "testFrequency": 10,
-        "playbackMode": "Simultaneous",
-        "locations": [
-            "minikube_PoP_saas_instana_test"
-        ],
-        "configuration": {
-                "script": "escaped script",
-                "syntheticType": "BrowserScript",
-                "browser": "chrome",
-                "timeout" : "5m",
-                "retries" : 0,
-                "retryInterval": 10,
-                "recordVideo": false
-        }
+```json
+{
+    "label": "BrowserTesting_Search_Engine",
+    "description": "browser multiscripts test",
+    "active": true,
+    "testFrequency": 10,
+    "playbackMode": "Simultaneous",
+    "locations": [
+        "minikube_PoP_saas_instana_test"
+    ],
+    "configuration": {
+            "script": "escaped script",
+            "syntheticType": "BrowserScript",
+            "browser": "chrome",
+            "timeout" : "5m",
+            "retries" : 0,
+            "retryInterval": 10,
+            "recordVideo": false
     }
-    ```
+}
+```
 </details>
 
 ## 🚤 Develop in IDE
