@@ -160,16 +160,17 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
     4. You can add commands e.g. `assert title`, or test your script with `run` button.
         ![selenium-side](doc/imgs/selenium-command.png)
 
-    5. Playback with Synthetic-browser-script to test.
+    5. Test with Synthetic-browser-script.
         
-        Why can not playback with Selenium IDE directly? Instana Synthetic provides more advanced Browser Testing APIs which can not be supported by Selenium IDE. If you are using them, you can playback with Synthetic-browser-script. Further more, usually you have cookies or cache in your browser, unless you clean them from browser settings, you will not see prompt windows as end users. Thus it is recommended to playback with Instana Synthetic-browser-script.
+        Why can not playback with Selenium IDE directly? Instana Synthetic provides more advanced Browser Testing APIs which can not be supported by Selenium IDE. If you are using them, you can run your side script with Synthetic-browser-script. Further more, usually you have cookies or cache in your browser once you access the website, unless you clean them from browser settings, you will not see the same website pages as end users. Thus it is recommended to playback with Instana Synthetic-browser-script.
+
         ```
         synb --side -f examples/side/search-instana.side
         ```
 
 * **Example #5:** Execute [Jest](https://github.com/facebook/jest) framework-based browser scripts
     
-    Some developers use Jest or have steps in browser test. You can use `"scriptType": "Jest"` in your Synthetic test configuration. And use `--jest` to test with Synthetic-browser-script.
+    Some developers use Jest framework, or you want to define steps in browser test. You can use `"scriptType": "Jest"` in your Synthetic test configuration. And use `--jest` to test your script with Synthetic-browser-script.
     
     ```bash
     synb --jest -f examples/jest/myjest.js
@@ -177,7 +178,6 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
 
     You can see the test results.
     ```bash
-    PASS  /home/lijing/instana-dev/synthetic-browser-script/examples/jest/myjest.js
     my jest test
       ✓ step1: test myBeverage
       ✓ step2: test search engine (7.17 s)
