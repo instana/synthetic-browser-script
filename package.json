@@ -1,6 +1,6 @@
 {
   "name": "@instana/synthetic-browser-script",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "dist/sbs-playback.js",
   "typings": "dist/src/main.d.ts",
