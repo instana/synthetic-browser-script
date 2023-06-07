@@ -7,5 +7,9 @@
       "region": "global"
     },
     "description": "Instana browser test"
+  }, 
+  "secure": {
+    "username": "user1",
+    "password": "pass1"
   }
 }
