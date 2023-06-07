@@ -5,6 +5,24 @@
 
 [![Banner](doc/imgs/sbs-banner.png)](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/overview/)
 
+
+- [Instana Synthetic Browser Script](#instana-synthetic-browser-script)
+      - [Homepage • Developer Guide • API Reference •](#homepage--developer-guide--api-reference-)
+  - [🍀 Pre-requisite](#-pre-requisite)
+      - [1. Install Node.js Server](#1-install-nodejs-server)
+      - [2. Install Browser Drivers](#2-install-browser-drivers)
+  - [🚀 Get started in 60 seconds](#-get-started-in-60-seconds)
+      - [1. Install Synthetic-browser-script from NPM](#1-install-synthetic-browser-script-from-npm)
+      - [2. Run a Demo Test](#2-run-a-demo-test)
+  - [🌟 Test with CLI](#-test-with-cli)
+      - [Test with CLI Options](#test-with-cli-options)
+      - [Use Proxy in Local ENV](#use-proxy-in-local-env)
+      - [Create Synthetic Test](#create-synthetic-test)
+  - [🚤 Develop in IDE](#-develop-in-ide)
+  - [🎯 Debugging with VS Code](#-debugging-with-vs-code)
+  - [Licence](#licence)
+
+
 #### [Homepage](https://www.ibm.com/docs/en/instana-observability/current?topic=instana-synthetic-monitoring-open-beta) &bullet; [Developer Guide](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/browser_script/) &bullet; [API Reference](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/browser_api_reference/) &bullet;
 
 This is a local runner can accelerate your Synthetic browser testing on-boarding. It provides totally the same testing results as Instana Synthetic thus can save your time in developing and testing Synthetic scripts locally. As a script writer you may have following requirements:
@@ -86,23 +104,33 @@ npm init
 
 From your existing project's root dir:
 ```bash
-# npm
+# npm local install
 npm install @instana/synthetic-browser-script --save-dev
 
-# yarn
+# yarn local install
 yarn add -D @instana/synthetic-browser-script
+
+# npm global install
+npm install -g @instana/synthetic-browser-script 
 ```
+To run the command-line, use `npx synb --help` for local install and `synb --help` for global install.
 
 #### 2. Run a Demo Test
 
 Synthetic-browser-script comes with useful command line options and a few examples, which are automatically copied to `node_modules/@instana/synthetic-browser-script/examples` during installation and can also be used as boilerplate to write your own tests on top of them.
 
-You can run `--help` and follow the instructions given at the console output
+When you use local install, you can run the command-line application with `npx synb --help`. When you use global install, you can run the command-line directly with `synb --help`. Following examples are using `synb`, please use `npx synb` if you use local install.
+
+You can run `--help` and follow the instructions given at the console output. Use `--version` or `-v` to ensure it is the latest version.
 ```bash
+# list all the command-line options 
 synb --help
+
+# check the current version
+synb --version
 ``` 
 
-Use CLI `synb` to execute. 
+Use CLI `synb` or `npx synb` to execute. 
 Use `-b` to specify the browser type (chrome is by default without this option).
 Use `-f` to specify the entry point of the javascript test scripts. 
 
@@ -130,8 +158,22 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
     ```bash
     synb -f examples/browserscripts/api-sample-actions.js --delay --loglevel error
     ```
+* **Example #3:** Execute scripts with user credentials or global variables    
+    In your local test env, you can create a file of `synb.json` in the same directory or parent directory of your scripts to mockup global variables for test purpose. 
+    
+    ```json
+    {
+      "secure": {
+        "username": "user1",
+        "password": "pass1"
+      }
+    }
+    ```
 
-* **Example #3:** Execute multiple browser scripts
+    ```bash
+    synb -f examples/bundledscripts/mytest.js
+    ```
+* **Example #4:** Execute multiple browser scripts
     
     If the business logic is really complex, containing everything in a single script is a bad experiences for developers, multiple script files are also supported for better management, especially managing them in Git repo. You can use bundled scripts and use `-f` to point the entry point. 
     
@@ -146,7 +188,7 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
     synb -f examples/bundledscripts/mytest.js
     ```
 
-* **Example #4:** Execute selenium IDE scripts
+* **Example #5:** Execute selenium IDE scripts
 
     The easiest way to create your own scripts is to use Selenium IDE to record and Synthetic-browser-script to playback.
     1. Download and install Selenium IDE [Firefox addon](https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/versions/) or [Chrome extension](https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd) in Firefox/Chrome browser. Restart the browser.
@@ -168,7 +210,7 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
         synb --side -f examples/side/search-instana.side
         ```
 
-* **Example #5:** Execute [Jest](https://github.com/facebook/jest) framework-based browser scripts
+* **Example #6:** Execute [Jest](https://github.com/facebook/jest) framework-based browser scripts
     
     Some developers use Jest framework, or you want to define steps in browser test. You can use `"scriptType": "Jest"` in your Synthetic test configuration. And use `--jest` to test your script with Synthetic-browser-script.
     
