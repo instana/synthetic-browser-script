@@ -1,5 +1,5 @@
 let click = async (message, by, timeout = 60000) => {
-    await console.log(`Click on ${message} >> ${by} << `);
+    console.log(`Click on ${message} >> ${by} << `);
     try {
         const element = await $browser.waitForAndFindElement(by, timeout);
         const out = $browser.actions().move({origin: element}).press().release().perform();
@@ -12,7 +12,7 @@ let click = async (message, by, timeout = 60000) => {
 }
 
 let hover = async (message, by, timeout = 60000) => {
-    await console.log(`Hover on ${message} >> ${by} << `);
+    console.log(`Hover on ${message} >> ${by} << `);
     try {
         const element = await $browser.waitForAndFindElement(by, timeout);
         //const out = $browser.actions().move({origin: element, duration: 2000}).perform();
