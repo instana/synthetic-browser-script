@@ -44,8 +44,8 @@ let scrollToViewAndClick = async (message, by, timeout = 60000) => {
   assert.equal("Home - IBM Developer", await $browser.getTitle());
 
   console.log("Step3: I want to learn Node.js");
-  await click("programming tab", $driver.By.linkText(`Programming Languages`),10000);
-  await scrollToViewAndClick('Get started with Node.js', $driver.By.css(`#tab-panel-5-default > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a`), 10000);
+  await click("programming tab", $driver.By.css(`#tab-link-3-default`), 10000);
+  await scrollToViewAndClick('Get started with Node.js', $driver.By.css(`#tab-panel-3-default > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(1) > div:nth-child(2)`), 10000);
 
   console.log("Step4: Move to Node.js summary");
   await scrollToViewAndClick('Summary',  $driver.By.linkText(`Summary`), 10000)
