@@ -102,7 +102,7 @@ It is recommended to create a project folder as a new Node.js project.
 Then you can put all your scripts under this Node.js project or sub-folders, develop and maintain your scripts continuously. 
 Firstly, assuming that your project folder is `browser-local-runner`, you will install `@instana/synthetic-browser-script` package under your Node.js project as a dependency following the instructions below. 
 Secondly, you can put your first script in the sub-folder e.g. `test-ibm-website`. 
-Then you get all the test results in this sub-folder including screenshots, browser logs, HAR file, videos if generated after executed with the local runner. 
+Then you get all the test results in this sub-folder including screenshots, browser logs, HAR file, videos if generated after running your script with the local runner. 
 ```bash
 # create a folder for your Node.js project as your working directory
 cd browser-local-runner
@@ -215,7 +215,7 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
         ```
         npx synb --side -f examples/side/search-instana.side
         ```
-
+<!--
 * **Example #6:** Execute [Jest](https://github.com/facebook/jest) framework-based browser scripts
     
     Some developers use Jest framework, or you want to define steps in browser test. You can use `"scriptType": "Jest"` in your Synthetic test configuration. And use `--jest` to test your script with Synthetic-browser-script.
@@ -232,6 +232,7 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
 
     Tests:       2 passed, 2 total
     ```
+-->
 
 #### Use Proxy in Local ENV
 How can I set a proxy for my local test? You can use environment variables if you do not want to change your scripts.
