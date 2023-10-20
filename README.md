@@ -249,12 +249,11 @@ Then you can see the logs:
 After test with CLI, you can create your Synthetic test in Instana.
 
 Instana Browser testing test types:
-
-    * Browser Simple test: Load a webpage URL with full browser
-    * Browser script: Node.js based scripts 
-        - Browser scripts: Single browser testing script
-        - Browser scripts: Bundled browser testing scripts
-    * Selenium IDE Script: Selenium IDE recorded scripts
+- [Browser Simple test: Load a webpage URL with full browser](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-endpoints-synthetic-tests)
+- [Browser script: Node.js based scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts) 
+    - Browser scripts: Single browser testing script
+    - Browser scripts: Bundled browser testing scripts
+- [Selenium IDE Script: Selenium IDE recorded scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-selenium-ide-scripts)
 
 * Use [Instana Synthetic Monitoring UI](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-endpoints-synthetic-tests) to create your test by using the wizard.
 
