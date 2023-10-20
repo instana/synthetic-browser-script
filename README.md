@@ -23,7 +23,7 @@
   - [Licence](#licence)
 
 
-#### [Homepage](https://www.ibm.com/docs/en/instana-observability/current?topic=instana-synthetic-monitoring-open-beta) &bullet; [Developer Guide](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/browser_script/) &bullet; [API Reference](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/browser_api_reference/) &bullet;
+#### [Homepage](https://www.ibm.com/docs/en/instana-observability/current?topic=instana-synthetic-monitoring) &bullet; [Developer Guide](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-using-browser-scripts-beta) &bullet; [API Reference](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-api-reference) &bullet;
 
 This is a local runner can accelerate your Synthetic browser testing on-boarding. It provides totally the same testing results as Instana Synthetic thus can save your time in developing and testing Synthetic scripts locally. As a script writer you may have following requirements:
 
@@ -34,7 +34,7 @@ This is a local runner can accelerate your Synthetic browser testing on-boarding
 💡 reproduce my test failures locally to help me debug root cause<br>
 💡 examples to demonstrate how to use browser testing APIs thus I can write my own ones on top of them
 
-[Synthetic-browser-script](https://github.com/instana/synthetic-browser-script/tags) is now available in the public NPM channel.
+[Synthetic-browser-script](https://www.npmjs.com/package/%40instana/synthetic-browser-script) is now available in the public NPM channel.
 
 **Supported runtime**
 
@@ -43,7 +43,7 @@ Chromium, Mozilla Firefox, Node.js runtime.
 ☑️ Google Chrome / Chromium<br>
 ☑️ Mozilla Firefox<br>
 ☑️ Node.js v16.x<br>
-☑️ selenium-webdriver v4.0.0
+☑️ selenium-webdriver v4.1.2
 
 
 ## 🍀 Pre-requisite
@@ -70,8 +70,8 @@ To quick start, you only need to install latest Chrome driver. Firefox is option
 
     |Browser	|Supported OS	|Maintained by	|Download	|
     |-----------|---------------|---------------|-----------|
-    |Chromium/Chrome|Windows/macOS/Linux|Google|[Downloads](https://chromedriver.chromium.org/downloads)|
-    |Firefox|Windows/macOS/Linux|Mozilla|[Downloads](https://github.com/mozilla/geckodriver/releases)|
+    |Chromium/Chrome|macOS/Linux|Google|[Downloads](https://chromedriver.chromium.org/downloads)|
+    |Firefox|macOS/Linux|Mozilla|[Downloads](https://github.com/mozilla/geckodriver/releases)|
 
 * **Install and Test Browser Drivers**
 
@@ -96,9 +96,17 @@ To quick start, you only need to install latest Chrome driver. Firefox is option
 
 #### 1. Install Synthetic-browser-script from NPM
 
-Initialize a new project with default values if you don't have one:
+Initialize a new project with default values if you don't have one. 
+
+It is recommended to create a project folder as a new Node.js project. 
+Then you can put all your scripts under this Node.js project or sub-folders, develop and maintain your scripts continuously. 
+Firstly, assuming that your project folder is `browser-local-runner`, you will install `@instana/synthetic-browser-script` package under your Node.js project as a dependency following the instructions below. 
+Secondly, you can put your first script in the sub-folder e.g. `test-ibm-website`. 
+Then you get all the test results in this sub-folder including screenshots, browser logs, HAR file, videos if generated after running your script with the local runner. 
 ```bash
-# npm
+# create a folder for your Node.js project as your working directory
+cd browser-local-runner
+# use npm init to initialize 
 npm init
 ```
 
@@ -109,28 +117,25 @@ npm install @instana/synthetic-browser-script --save-dev
 
 # yarn local install
 yarn add -D @instana/synthetic-browser-script
-
-# npm global install
-npm install -g @instana/synthetic-browser-script 
 ```
-To run the command-line, use `npx synb --help` for local install and `synb --help` for global install.
+To run the command-line and verify the installation, use `npx synb --help`. Global installation is not recommended.
 
 #### 2. Run a Demo Test
 
-Synthetic-browser-script comes with useful command line options and a few examples, which are automatically copied to `node_modules/@instana/synthetic-browser-script/examples` during installation and can also be used as boilerplate to write your own tests on top of them.
+Synthetic-browser-script comes with useful command line options and rich examples, which are automatically copied to `node_modules/@instana/synthetic-browser-script/examples` during installation and can also be used as boilerplate to write your own tests on top of them.
 
-When you use local install, you can run the command-line application with `npx synb --help`. When you use global install, you can run the command-line directly with `synb --help`. Following examples are using `synb`, please use `npx synb` if you use local install.
+When you use local installation, you can run the command-line application with `npx synb --help`.
 
 You can run `--help` and follow the instructions given at the console output. Use `--version` or `-v` to ensure it is the latest version.
 ```bash
 # list all the command-line options 
-synb --help
+npx synb --help
 
 # check the current version
-synb --version
+npx synb --version
 ``` 
 
-Use CLI `synb` or `npx synb` to execute. 
+Use CLI `npx synb` to execute. 
 Use `-b` to specify the browser type (chrome is by default without this option).
 Use `-f` to specify the entry point of the javascript test scripts. 
 
@@ -139,7 +144,7 @@ Use `-f` to specify the entry point of the javascript test scripts.
 cp -r node_modules/@instana/synthetic-browser-script/examples .
 
 # run bundled browser test scripts
-synb -b chrome -f examples/bundledscripts/mytest.js
+npx synb -b chrome -f examples/bundledscripts/mytest.js
 ```
 
 Execution logs will be shown in console output. 
@@ -147,19 +152,20 @@ All the test results including HAR file, videos, screenshots, browser log can be
 
 ## 🌟 Test with CLI
 #### Test with CLI Options
-Create a folder for your test scripts and use `-f, --file` to specify the entry point of the test scripts. The test results will be put in the same folder. Synthetic-browser-script comes with examples of [different browser test types](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/overview/#new-synthetic-test-types) as `Browser Script`, `Selenium IDE Script`, `single` or `bundled` script in `node_modules/@instana/synthetic-browser-script/examples`. Will take them as examples. For the examples with proxy demonstration as `examples/browserscripts/api-sample-proxy.js` and `examples/side/api-sample-browserapi.side`, you need to change the proxy to the valid one before running it. 
+Create a folder for your test scripts and use `-f, --file` to specify the entry point of the test scripts. The test results will be put in the same folder. Synthetic-browser-script comes with examples of [different browser test types](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-using-browser-scripts-beta#browser-script-test-types) as `Browser Script`, `Selenium IDE Script`, `single` or `bundled` script in `node_modules/@instana/synthetic-browser-script/examples`. Will take them as examples. For the examples with proxy demonstration as `examples/browserscripts/api-sample-proxy.js` and `examples/side/api-sample-browserapi.side`, you need to change the proxy to the valid one before running it. 
 
-* **Example #1:** Use `synb --help` to check all the CLI options. 
+* **Example #1:** Use `npx synb --help` to check all the CLI options. 
 
 * **Example #2:** Execute browser script test
     
-    Instana Synthetic browser testing supports Selenium based APIs, and additional more than 30 extended browser testing APIs. Refer to [Browser Testing API](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/browser_api_reference/) reference for useful browser testing APIs. The examples in `examples/browserscripts` demonstrate how to use these APIs. Run a demo test as below. `--delay` `--loglevel` are optional. `--delay` can make test fast by delaying cleanup work. `--loglevel` can set user log level. 
+    Instana Synthetic browser testing supports Selenium based APIs, and additional more than 30 extended browser testing APIs. Refer to [Browser Testing API](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-api-reference) reference for useful browser testing APIs. The examples in `examples/browserscripts` demonstrate how to use these APIs. Run a demo test as below. `--delay` `--loglevel` are optional. `--delay` can make test fast by delaying cleanup work. `--loglevel` can set user log level. 
 
     ```bash
-    synb -f examples/browserscripts/api-sample-actions.js --delay --loglevel error
+    npx synb -f examples/browserscripts/api-sample-actions.js --delay --loglevel error
     ```
 * **Example #3:** Execute scripts with user credentials or global variables    
-    In your local test env, you can create a file of `synb.json` in the same directory or parent directory of your scripts to mockup global variables for test purpose. 
+    In your local test env, you can create a file of `synb.json` in the same directory or parent directory of your scripts to mockup global variables for test purpose. You can use `$secure.MY_SECURE_CREDENTIAL` to refer to predefined secure credentials in your script. 
+    [`$secure`](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts#secure) is one of the global variables Instana synthetic provided to help you accelerate and optimize script development.  
     
     ```json
     {
@@ -171,7 +177,7 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
     ```
 
     ```bash
-    synb -f examples/bundledscripts/mytest.js
+    npx synb -f examples/bundledscripts/mytest.js
     ```
 * **Example #4:** Execute multiple browser scripts
     
@@ -179,13 +185,13 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
     
     In this example `examples/bundledscripts`, we use multiple scripts and `$synthetic` global object to demonstrate how to write complex test scripts.
     The `$synthetic` object's properties can be accessed by user scripts. 
-    And `$synthetic.labels` can be defined as `"customProperties"` in Synthetic test.
+    And `$synthetic.labels` can be defined as `"customProperties"` in Synthetic test configuration.
     
     In your local test env, you can define `examples/bundledscripts/synb.json` to mockup these variables for test purpose. 
     You can also put it in parent path in your project root directory.
     
     ```bash
-    synb -f examples/bundledscripts/mytest.js
+    npx synb -f examples/bundledscripts/mytest.js
     ```
 
 * **Example #5:** Execute selenium IDE scripts
@@ -207,15 +213,15 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
         Why can not playback with Selenium IDE directly? Instana Synthetic provides more advanced Browser Testing APIs which can not be supported by Selenium IDE. If you are using them, you can run your side script with Synthetic-browser-script. Further more, usually you have cookies or cache in your browser once you access the website, unless you clean them from browser settings, you will not see the same website pages as end users. Thus it is recommended to playback with Instana Synthetic-browser-script.
 
         ```
-        synb --side -f examples/side/search-instana.side
+        npx synb --side -f examples/side/search-instana.side
         ```
-
+<!--
 * **Example #6:** Execute [Jest](https://github.com/facebook/jest) framework-based browser scripts
     
     Some developers use Jest framework, or you want to define steps in browser test. You can use `"scriptType": "Jest"` in your Synthetic test configuration. And use `--jest` to test your script with Synthetic-browser-script.
     
     ```bash
-    synb --jest -f examples/jest/myjest.js
+    npx synb --jest -f examples/jest/myjest.js
     ```
 
     You can see the test results.
@@ -226,6 +232,7 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
 
     Tests:       2 passed, 2 total
     ```
+-->
 
 #### Use Proxy in Local ENV
 How can I set a proxy for my local test? You can use environment variables if you do not want to change your scripts.
@@ -239,39 +246,31 @@ Then you can see the logs:
 ```
 
 #### Create Synthetic Test
-After test with CLI, you can use [Instana Synthetic Open APIs](https://instana.github.io/openapi/#operation/createSyntheticTest) to create Synthetic test in Instana. 
-Use `"syntheticType": "BrowserScript"` for [Browser Script](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/browser_script/) test or `"syntheticType": "WebpageScript"` for [Selenium IDE Script](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/browser_script/) test.
-Use `"script"` for [single test script](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/overview/#single-browser-testing-script), or `"scripts"` for [bundled scripts](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/overview/#bundled-browser-testing-scripts).
+After test with CLI, you can use [Instana Synthetic Monitoring UI](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-endpoints-synthetic-tests) to create your test by using the wizard.
+
+You can alo use [synthetic-synctl tool](https://github.com/instana/synthetic-synctl) to create Synthetic test by using command lines. 
+
+Instana Synthetic uses `"syntheticType": "BrowserScript"` for [Browser Script](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts) test or `"syntheticType": "WebpageScript"` for [Selenium IDE Script](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-selenium-ide-scripts) test.
+In Instana Synthetic test configuration, use `"script"` for [single test script](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-using-browser-scripts-beta#browser-scripts-single-browser-testing-script), or `"scripts"` for [bundled scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-using-browser-scripts-beta#browser-scripts-bundled-browser-testing-scripts).
 `"retries"` and `"recordVideo"` will only retry or capture video on test failures after you change the default value.
 <details>
-<summary>Example: Instana browser script test</summary>
+<summary>Example: Create Instana browser script test</summary>
 
-```json
-{
-    "label": "BrowserTesting_Search_Engine",
-    "description": "browser multiscripts test",
-    "active": true,
-    "testFrequency": 10,
-    "playbackMode": "Simultaneous",
-    "locations": [
-        "minikube_PoP_saas_instana_test"
-    ],
-    "configuration": {
-            "script": "escaped script",
-            "syntheticType": "BrowserScript",
-            "browser": "chrome",
-            "timeout" : "5m",
-            "retries" : 0,
-            "retryInterval": 10,
-            "recordVideo": false
-    }
-}
+```bash
+# create a WebpageScript test with Selenium IDE recorded script
+synctl create test -t 3 \
+--label browserscript-1 \
+--location "LNCa5C1uYDYTL8hXFVps" \
+--record-video true \
+--frequency 15
+--from-file side/webpage-script.side  \
+--browser chrome
 ```
 </details>
 
 ## 🚤 Develop in IDE
 Launch Visual Studio Code with `code .` in your project directory which already set up above. 
-You can develop your browser script tests in Visual Studio Code with "code completion" or "code hinting" feature for all the browser testing APIs.
+You can develop your browser script tests in Visual Studio Code with `"code completion"` or `"code hinting"` feature for all the browser testing APIs.
 
 * Workspace in VS Code
     ![vscode-project](doc/imgs/vscode-project.png)
@@ -316,8 +315,7 @@ package.json
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@instana/synthetic-browser-script": "^1.0.1",
-    "@types/jest": "^29.0.0"
+    "@instana/synthetic-browser-script": "^1.1.0"
   }
 }
 ```

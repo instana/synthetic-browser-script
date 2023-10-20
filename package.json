@@ -1,7 +1,7 @@
 {
   "name": "@instana/synthetic-browser-script",
-  "version": "1.0.6",
-  "description": "",
+  "version": "1.1.0",
+  "description": "A local runner to test and debug your browser scripts locally with CLI",
   "main": "dist/sbs-playback.js",
   "typings": "dist/src/main.d.ts",
   "files": [
@@ -58,7 +58,7 @@
     "atob": "^2.1.2",
     "basic-ftp": "^4.6.3",
     "btoa": "^1.2.1",
-    "chai": "^4.3.4",
+    "chai": "^4.3.10",
     "colors": "^1.4.0",
     "consoleplusplus": "^1.4.4",
     "crypto-js": "^4.0.0",
@@ -77,7 +77,7 @@
     "protocol-buffers": "^4.2.0",
     "q": "^1.5.1",
     "re2": "^1.17.4",
-    "selenium-webdriver": "4.0.0",
+    "selenium-webdriver": "4.1.2",
     "ssh2-sftp-client": "^7.0.0",
     "ssl-checker": "^2.0.7",
     "text-encoding": "^0.7.0",
