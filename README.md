@@ -249,6 +249,7 @@ Then you can see the logs:
 After test with CLI, you can create your Synthetic test in Instana.
 
 Instana Browser testing test types:
+
     * Browser Simple test: Load a webpage URL with full browser
     * Browser script: Node.js based scripts 
         - Browser scripts: Single browser testing script
