@@ -17,10 +17,11 @@
   - [🌟 Test with CLI](#-test-with-cli)
       - [Test with CLI Options](#test-with-cli-options)
       - [Use Proxy in Local ENV](#use-proxy-in-local-env)
-      - [Create Synthetic Test](#create-synthetic-test)
+  - [🎉 Create Synthetic Test in Instana](#-create-synthetic-test-in-instana)
   - [🚤 Develop in IDE](#-develop-in-ide)
   - [🎯 Debugging with VS Code](#-debugging-with-vs-code)
   - [Licence](#licence)
+
 
 
 #### [Homepage](https://www.ibm.com/docs/en/instana-observability/current?topic=instana-synthetic-monitoring) &bullet; [Developer Guide](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-using-browser-scripts-beta) &bullet; [API Reference](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-api-reference) &bullet;
@@ -245,7 +246,7 @@ Then you can see the logs:
 2023-05-26T05:29:22Z [SyntheticPoP] [INFO]  manual proxy config {"proxyType":"manual","ftpProxy":"xxxx:8080","httpProxy":"xxxx:8080","sslProxy":"xxxxx:8080"}
 ```
 
-#### Create Synthetic Test
+## 🎉 Create Synthetic Test in Instana
 After test with CLI, you can create your Synthetic test in Instana.
 
 Instana Browser testing test types:
@@ -259,8 +260,9 @@ Instana Browser testing test types:
 Use [Instana Synthetic Monitoring UI](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-endpoints-synthetic-tests) to create your test by using the wizard.
 
 You can also use [synthetic-synctl tool](https://github.com/instana/synthetic-synctl) to create Synthetic test by using command lines. 
+
   <details>
-  <summary>Example: Create Instana browser script test</summary>
+  <summary>Example: Create Instana browser script test with synctl tool</summary>
 
   ```bash
   # create a WebpageScript test with Selenium IDE recorded script
