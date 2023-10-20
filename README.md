@@ -17,10 +17,11 @@
   - [🌟 Test with CLI](#-test-with-cli)
       - [Test with CLI Options](#test-with-cli-options)
       - [Use Proxy in Local ENV](#use-proxy-in-local-env)
-      - [Create Synthetic Test](#create-synthetic-test)
+  - [🎉 Create Synthetic Test in Instana](#-create-synthetic-test-in-instana)
   - [🚤 Develop in IDE](#-develop-in-ide)
   - [🎯 Debugging with VS Code](#-debugging-with-vs-code)
   - [Licence](#licence)
+
 
 
 #### [Homepage](https://www.ibm.com/docs/en/instana-observability/current?topic=instana-synthetic-monitoring) &bullet; [Developer Guide](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-using-browser-scripts-beta) &bullet; [API Reference](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-api-reference) &bullet;
@@ -245,28 +246,49 @@ Then you can see the logs:
 2023-05-26T05:29:22Z [SyntheticPoP] [INFO]  manual proxy config {"proxyType":"manual","ftpProxy":"xxxx:8080","httpProxy":"xxxx:8080","sslProxy":"xxxxx:8080"}
 ```
 
-#### Create Synthetic Test
-After test with CLI, you can use [Instana Synthetic Monitoring UI](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-endpoints-synthetic-tests) to create your test by using the wizard.
+## 🎉 Create Synthetic Test in Instana
+After test with CLI, you can create your Synthetic test in Instana.
 
-You can alo use [synthetic-synctl tool](https://github.com/instana/synthetic-synctl) to create Synthetic test by using command lines. 
+Instana Browser testing test types:
+- [Browser Simple test: Load a webpage URL with full browser](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-endpoints-synthetic-tests)
+- [Browser script: Node.js based scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts) 
+    - Browser scripts: Single browser testing script
+    - Browser scripts: Bundled browser testing scripts
+- [Selenium IDE Script: Selenium IDE recorded scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-selenium-ide-scripts)
 
-Instana Synthetic uses `"syntheticType": "BrowserScript"` for [Browser Script](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts) test or `"syntheticType": "WebpageScript"` for [Selenium IDE Script](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-selenium-ide-scripts) test.
-In Instana Synthetic test configuration, use `"script"` for [single test script](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-using-browser-scripts-beta#browser-scripts-single-browser-testing-script), or `"scripts"` for [bundled scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-using-browser-scripts-beta#browser-scripts-bundled-browser-testing-scripts).
-`"retries"` and `"recordVideo"` will only retry or capture video on test failures after you change the default value.
-<details>
-<summary>Example: Create Instana browser script test</summary>
 
-```bash
-# create a WebpageScript test with Selenium IDE recorded script
-synctl create test -t 3 \
---label browserscript-1 \
---location "LNCa5C1uYDYTL8hXFVps" \
---record-video true \
---frequency 15
---from-file side/webpage-script.side  \
---browser chrome
-```
-</details>
+Use [Instana Synthetic Monitoring UI](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-endpoints-synthetic-tests) to create your test by using the wizard.
+
+You can also use [synthetic-synctl tool](https://github.com/instana/synthetic-synctl) to create Synthetic test by using command lines. 
+
+  <details>
+  <summary>Example: Create Instana browser script test with synctl tool</summary>
+
+  ```bash
+  # create a WebpageScript test with Selenium IDE recorded script
+  synctl create test -t 3 \
+  --label browserscript-1 \
+  --location "LNCa5C1uYDYTL8hXFVps" \
+  --record-video true \
+  --frequency 15
+  --from-file side/webpage-script.side  \
+  --browser chrome
+
+  # create a BrowserScript test with JavaScript file
+  synctl create test -t 2 \
+  --label "browserscript-test" \
+  --location "$LOCATION_ID" \
+  --frequency 5 \
+  --browser chrome \   
+  --from-file api-sample-actions.js
+
+  # patch a Synthetic test to update test script
+  synctl patch test 6wY4yPKfEpz09sBFhYSG --script-file rumattatch.side
+
+  # get test details to see the updated results
+  synctl get test 6wY4yPKfEpz09sBFhYSG --show-details
+  ```
+  </details>
 
 ## 🚤 Develop in IDE
 Launch Visual Studio Code with `code .` in your project directory which already set up above. 
