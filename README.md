@@ -255,37 +255,38 @@ Instana Browser testing test types:
     - Browser scripts: Bundled browser testing scripts
 - [Selenium IDE Script: Selenium IDE recorded scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-selenium-ide-scripts)
 
-* Use [Instana Synthetic Monitoring UI](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-endpoints-synthetic-tests) to create your test by using the wizard.
 
-* You can also use [synthetic-synctl tool](https://github.com/instana/synthetic-synctl) to create Synthetic test by using command lines. 
-    <details>
-    <summary>Example: Create Instana browser script test</summary>
+Use [Instana Synthetic Monitoring UI](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-endpoints-synthetic-tests) to create your test by using the wizard.
 
-    ```bash
-    # create a WebpageScript test with Selenium IDE recorded script
-    synctl create test -t 3 \
-    --label browserscript-1 \
-    --location "LNCa5C1uYDYTL8hXFVps" \
-    --record-video true \
-    --frequency 15
-    --from-file side/webpage-script.side  \
-    --browser chrome
+You can also use [synthetic-synctl tool](https://github.com/instana/synthetic-synctl) to create Synthetic test by using command lines. 
+  <details>
+  <summary>Example: Create Instana browser script test</summary>
 
-    # create a BrowserScript test with JavaScript file
-    synctl create test -t 2 \
-    --label "browserscript-test" \
-    --location "$LOCATION_ID" \
-    --frequency 5 \
-    --browser chrome \   
-    --from-file api-sample-actions.js
+  ```bash
+  # create a WebpageScript test with Selenium IDE recorded script
+  synctl create test -t 3 \
+  --label browserscript-1 \
+  --location "LNCa5C1uYDYTL8hXFVps" \
+  --record-video true \
+  --frequency 15
+  --from-file side/webpage-script.side  \
+  --browser chrome
 
-    # patch a Synthetic test to update test script
-    synctl patch test 6wY4yPKfEpz09sBFhYSG --script-file rumattatch.side
+  # create a BrowserScript test with JavaScript file
+  synctl create test -t 2 \
+  --label "browserscript-test" \
+  --location "$LOCATION_ID" \
+  --frequency 5 \
+  --browser chrome \   
+  --from-file api-sample-actions.js
 
-    # get test details to see the updated results
-    synctl get test 6wY4yPKfEpz09sBFhYSG --show-details
-    ```
-    </details>
+  # patch a Synthetic test to update test script
+  synctl patch test 6wY4yPKfEpz09sBFhYSG --script-file rumattatch.side
+
+  # get test details to see the updated results
+  synctl get test 6wY4yPKfEpz09sBFhYSG --show-details
+  ```
+  </details>
 
 ## 🚤 Develop in IDE
 Launch Visual Studio Code with `code .` in your project directory which already set up above. 
