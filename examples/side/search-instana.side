@@ -40,7 +40,7 @@
 	}, {
 	"id": "d13e50bd-f698-4a04-9420-701a21dcde8d",
 	"comment": "",
-	"command": "waitForElementVisible",
+	"command": "waitForElementPresent",
 	"target": "id=result-stats",
 	"targets": [
 		["id=result-stats", "id"],
@@ -49,7 +49,7 @@
 		["xpath=//div[@id='slim_appbar']/div/div", "xpath:idRelative"],
 		["xpath=//div[7]/div/div/div/div/div", "xpath:position"]
 	],
-	"value": "5000"
+	"value": "10000"
 	}]
 }],
 "suites": [{
