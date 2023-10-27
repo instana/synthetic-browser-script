@@ -63,7 +63,6 @@ const { assert } = require("chai");
    * samples of finding element or elements by id or tag name
    */
   let elem = await $browser.waitForAndFindElement($driver.By.id("boxyear"), 1000);
-  await elem.click();
   assert.equal("2023", await elem.getAttribute("value"));
   assert.equal("2023", await $browser.$('#boxyear').getAttribute("value"));
 

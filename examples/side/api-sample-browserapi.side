@@ -44,7 +44,7 @@
     }, {
     "id": "d13e50bd-f698-4a04-9420-701a21dcde8d",
     "comment": "",
-    "command": "waitForElementVisible",
+    "command": "waitForElementPresent",
     "target": "id=result-stats",
     "targets": [],
     "value": "5000"
