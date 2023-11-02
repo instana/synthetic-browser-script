@@ -97,6 +97,8 @@ $driver.By.xpath("//a[contains(@href,'Electronics')]")
 $driver.By.xpath(`//dds-footer-nav-item[contains(.,'Developer education')]`)
 ```
 
-		
+In the Selenium IDE plugin, you can choose different locators by clicking the target if you find the default one is not as goog as enough. 
+
+![selenium-locators](doc/imgs/selenium-locators.png)
 
 
