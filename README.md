@@ -20,6 +20,9 @@
   - [🎉 Create Synthetic Test in Instana](#-create-synthetic-test-in-instana)
   - [🚤 Develop in IDE](#-develop-in-ide)
   - [🎯 Debugging with VS Code](#-debugging-with-vs-code)
+  - [🫶 Frequently Asked Questions](#-frequently-asked-questions)
+    - [Examples Used to Create Synthetic Tests](#examples-used-to-create-synthetic-tests)
+    - [Best Practice and Frequently Asked Questions](#best-practice-and-frequently-asked-questions)
   - [Licence](#licence)
 
 
@@ -341,6 +344,17 @@ package.json
   }
 }
 ```
+## 🫶 Frequently Asked Questions 
+
+### Examples Used to Create Synthetic Tests
+
+* [Browser script](https://github.com/instana/synthetic-browser-script/blob/main/examples/browserscripts/api-sample-actions.js)
+
+* [Selenium side script](https://github.com/instana/synthetic-browser-script/blob/main/examples/side/search-instana.side)
+
+* [Multiple browser scripts](https://github.com/instana/synthetic-browser-script/blob/main/examples/bundledtest.zip)
+  
+### [Best Practice and Frequently Asked Questions](./doc/FAQ.md)
 
 ## Licence
 [MIT](https://github.com/instana/synthetic-browser-script/blob/main/LICENSE)
