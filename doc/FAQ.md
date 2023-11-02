@@ -1,6 +1,6 @@
 # Frequently Asked Questions
 
-## 🌟 Why don't Selenium recorded scripts run successfully in Instana? 
+## 🌟 Why don't Selenium recorded scripts run successfully in Instana
 This issue is usually because you have existed cookies and history data in your browsers, thus you can not see popup windows such as accept cookies in front of your website. Usually you need to close the popup window before your actions. 
 
 Even though you can run your scripts successfully locally with Selenium plugin, you may not run it successfully in Instana because of popup windows. Thus you are recommended to use Instana [Synthetic-browser-script](https://www.npmjs.com/package/%40instana/synthetic-browser-script) local runner to test your script locally after recorded with Selenium IDE. The Synthetic-browser-script local runner will provide you clear user profiles as end user experience, and you can see full browsers and your script actions. 
@@ -77,13 +77,14 @@ A reference from Selenium about [locator strategies](https://www.selenium.dev/do
 |`$browser.waitForAndFindElement($driver.By.id("boxyear"), 1000)`| Wait and find element by ID until the element is visible or timeout value reached. | 
 |`$browser.findElements($driver.By.css('select'))`| Search for multiple elements on the page with the CSS selector.| 
 |`$browser.findElement($driver.By.linkText("About"))`| Find element by linkText|
-|`$browser.waitForAndFindElement($driver.By.id("boxyear"), 1000)`| Find element by ID|
 |`$browser.findElement($driver.By.xpath('//input[@value='f']'))`| Find element by xpath|
 
-More information about how to use XPath and CSS selector to help you move fast. 
+More information provided as following about how to use XPath and CSS selector to help you move fast. 
+
 The format of CSS selector `By.css(element[attribute='attribute-value'])`.
 
 The format of XPath expression `By.xpath("//element[@attribute='value']")` or `By.xpath("//*[@attribute='value']")`
+
 How to find an element by attributes e.g. `<a href="mysite.com"></a>`:
 
 ```javascript
