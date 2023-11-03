@@ -15,9 +15,15 @@
 
 
 ## 🌟 Why don't Selenium recorded scripts run successfully in Instana
-This issue is usually because you have existed cookies and history data in your browsers, thus you can not see popup windows such as accept cookies in front of your website. Usually you need to close the popup window before your actions. 
+This issue is usually because you have existed cookies and history data in your browsers, thus you can not see popup windows such as accept cookies in front of your website. To avoid this issue, you are recommended to use Instana [Synthetic-browser-script](https://www.npmjs.com/package/%40instana/synthetic-browser-script) local runner to test your script locally after creating test script. 
 
-Even though you can run your scripts successfully locally with Selenium plugin, you may not run it successfully in Instana because of popup windows. Thus you are recommended to use Instana [Synthetic-browser-script](https://www.npmjs.com/package/%40instana/synthetic-browser-script) local runner to test your script locally after recorded with Selenium IDE. The Synthetic-browser-script local runner will provide you clear user profiles as end user experience, and you can see full browsers and your script actions. 
+It can provide you the benefits:
+* **Clear user profiles closer to end user experience** 
+    
+    Even though you can run your scripts successfully locally with Selenium IDE plugin, you may not run it successfully in Instana because of popup windows. Usually you need to close the popup window before your actions. The Synthetic-browser-script local runner will provide you clear user profiles as end user experience. And you can see what happened when full browser prompted and perform your script actions.
+* **Instana extended browser testing APIs**
+    
+    If you would like to use [Instana extended browser testing APIs](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-selenium-ide-scripts#expanding-testing-capabilities-in-selenium-ide-scripts), you can use the Synthetic-browser-script local runner to test it. It provides the same runtime as Instana Synthetic browser engine. 
 
 ## 🌟 How to resolve the issue of element is not clickable
 
