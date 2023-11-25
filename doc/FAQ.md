@@ -1,5 +1,4 @@
 # Frequently Asked Questions
-
 - [Frequently Asked Questions](#frequently-asked-questions)
   - [🌟 Why don't Selenium recorded scripts run successfully in Instana](#-why-dont-selenium-recorded-scripts-run-successfully-in-instana)
   - [🌟 How to resolve the issue of element is not clickable](#-how-to-resolve-the-issue-of-element-is-not-clickable)
@@ -12,6 +11,8 @@
   - [🌟 How to take a screenshot in Selenium IDE script](#-how-to-take-a-screenshot-in-selenium-ide-script)
   - [🌟 Is it possible to do a select in a BrowserScript test](#-is-it-possible-to-do-a-select-in-a-browserscript-test)
   - [🌟 How to handle Shadow DOM elements](#-how-to-handle-shadow-dom-elements)
+  - [🌟 How to verify specific text in the page contents with partial matching](#-how-to-verify-specific-text-in-the-page-contents-with-partial-matching)
+
 
 
 ## 🌟 Why don't Selenium recorded scripts run successfully in Instana
@@ -211,3 +212,27 @@ let element = await shadowRoot.findElement(elementSelector);
 console.log("element text is:", await element.getText(), ", id is:", await element.getId());
 ```
 
+## 🌟 How to verify specific text in the page contents with partial matching 
+You can use findElement by XPath to verify specific text in your page with partial matching. 
+
+* **Verify page content in Browser script test:**
+```javascript
+let element = await $browser.findElement(By.xpath(`//h1[contains(text(), 'Action Result')]`));
+console.log("Found element:", await element.getTagName(), ", element text is:", await element.getText());
+
+await $browser.waitForAndFindElement(By.xpath(`//label[contains(text(), 'Action Result')]`), 5000);
+console.log(">>>>>>>>>>>>>>>>>>>", "Action Result found");
+```
+
+* **Verify page content in Selenium IDE recorded script test:**
+```json
+{
+"id": "4cbe70ec-48b2-4e57-97cf-6d855fa0f08f",
+"comment": "",
+"command": "waitForElementVisible",
+"target": "//h1[contains(text(), \"Selenium automates\")]",
+"targets": [],
+"value": "30000"
+}
+```
+![selenium-command](imgs/selenium-waitForElementVisible.png)
