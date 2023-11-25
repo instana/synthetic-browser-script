@@ -211,3 +211,27 @@ let element = await shadowRoot.findElement(elementSelector);
 console.log("element text is:", await element.getText(), ", id is:", await element.getId());
 ```
 
+## 🌟 How to verify specific text in the page contents with partial matching 
+You can use findElement by XPath to verify specific text in your page with partial matching. 
+
+* **Verify page content in Browser script test:**
+```javascript
+let element = await $browser.findElement(By.xpath(`//h1[contains(text(), 'Action Result')]`));
+console.log("Found element:", await element.getTagName(), ", element text is:", await element.getText());
+
+await $browser.waitForAndFindElement(By.xpath(`//label[contains(text(), 'Action Result')]`), 5000);
+console.log(">>>>>>>>>>>>>>>>>>>", "Action Result found");
+```
+
+* **Verify page content in Selenium IDE recorded script test:**
+```json
+{
+"id": "4cbe70ec-48b2-4e57-97cf-6d855fa0f08f",
+"comment": "",
+"command": "waitForElementVisible",
+"target": "//h1[contains(text(), \"Selenium automates\")]",
+"targets": [],
+"value": "30000"
+}
+```
+![selenium-command](imgs/selenium-waitForElementVisible.png)
