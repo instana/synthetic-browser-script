@@ -1,5 +1,4 @@
 # Frequently Asked Questions
-
 - [Frequently Asked Questions](#frequently-asked-questions)
   - [🌟 Why don't Selenium recorded scripts run successfully in Instana](#-why-dont-selenium-recorded-scripts-run-successfully-in-instana)
   - [🌟 How to resolve the issue of element is not clickable](#-how-to-resolve-the-issue-of-element-is-not-clickable)
@@ -12,6 +11,8 @@
   - [🌟 How to take a screenshot in Selenium IDE script](#-how-to-take-a-screenshot-in-selenium-ide-script)
   - [🌟 Is it possible to do a select in a BrowserScript test](#-is-it-possible-to-do-a-select-in-a-browserscript-test)
   - [🌟 How to handle Shadow DOM elements](#-how-to-handle-shadow-dom-elements)
+  - [🌟 How to verify specific text in the page contents with partial matching](#-how-to-verify-specific-text-in-the-page-contents-with-partial-matching)
+
 
 
 ## 🌟 Why don't Selenium recorded scripts run successfully in Instana
