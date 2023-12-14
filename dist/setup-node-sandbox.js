@@ -332,7 +332,7 @@ global.process = {
 	stdin: {},
 	exit: function (code) {
 		console.log('⚠️  user triggered exit', code ?? "");
-		const err = new Error('vm2-user-process-exit');
+		const err = new Error('SynVM-user-process-exit');
 		throw err;
 	},
 	__proto__: process.prototype,

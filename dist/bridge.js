@@ -685,7 +685,7 @@ function createBridge(otherInit, registerProxy) {
 	}
 
 	BaseHandler.prototype[thisSymbolNodeJSUtilInspectCustom] = undefined;
-	BaseHandler.prototype[thisSymbolToStringTag] = 'VM2 Wrapper';
+	BaseHandler.prototype[thisSymbolToStringTag] = 'SynVM Wrapper';
 	BaseHandler.prototype[thisSymbolIterator] = undefined;
 
 	function defaultFactory(object) {
