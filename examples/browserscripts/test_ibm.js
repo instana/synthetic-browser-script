@@ -42,28 +42,18 @@ let accessShadowDOMAndClick = async (
 
 
 (async function () {
-  await $browser.get("https://www.ibm.com/us-en");
+  console.log("Step1: Open developer education page");
+  await $browser.get("https://developer.ibm.com");
 
-  console.log("Step1: Accept all cookies");
+  console.log("Step2: Accept all cookies");
   const cookies = await $browser.waitForAndFindElement(
     $driver.By.id(`truste-consent-button`),
     30000
   );
   await cookies.click();
 
-  console.log("Step2: Scroll down to developer education link and navigate to it");
-  accessShadowDOMAndClick(
-    "developer education",
-    $driver.By.xpath(`//dds-footer-nav-item[contains(.,'Developer education')]`),
-    $driver.By.id(`link`),
-    30000
-  );
-  console.log("Assert page title");
-  await $browser.waitForAndFindElement($driver.By.css(`h1 > strong`), 30000);
-  assert.equal("Home - IBM Developer", await $browser.getTitle());
-
   console.log("Step3: I want to learn programming languages");
-  await click("programming tab", $driver.By.id(`tab-link-3-default`), 10000);
+  await scrollToViewAndClick("programming tab", $driver.By.id(`tab-link-3-default`), 10000);
   await scrollToViewAndClick('Get started with programming language', $driver.By.css(`a[href*='data-analysis-using-python']`), 10000);
 
   console.log("Step4: Move to summary page");

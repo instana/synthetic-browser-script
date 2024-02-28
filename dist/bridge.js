@@ -1,24 +1,5 @@
 'use strict';
 
-/**
- * __        ___    ____  _   _ ___ _   _  ____
- * \ \      / / \  |  _ \| \ | |_ _| \ | |/ ___|
- *  \ \ /\ / / _ \ | |_) |  \| || ||  \| | |  _
- *   \ V  V / ___ \|  _ <| |\  || || |\  | |_| |
- *    \_/\_/_/   \_\_| \_\_| \_|___|_| \_|\____|
- *
- * This file is critical for vm2. It implements the bridge between the host and the sandbox.
- * If you do not know exactly what you are doing, you should NOT edit this file.
- *
- * The file is loaded in the host and sandbox to handle objects in both directions.
- * This is done to ensure that RangeErrors are from the correct context.
- * The boundary between the sandbox and host might throw RangeErrors from both contexts.
- * Therefore, thisFromOther and friends can handle objects from both domains.
- *
- * Method parameters have comments to tell from which context they came.
- *
- */
-
 const globalsList = [
 	'Number',
 	'String',
@@ -685,7 +666,7 @@ function createBridge(otherInit, registerProxy) {
 	}
 
 	BaseHandler.prototype[thisSymbolNodeJSUtilInspectCustom] = undefined;
-	BaseHandler.prototype[thisSymbolToStringTag] = 'SynVM Wrapper';
+	BaseHandler.prototype[thisSymbolToStringTag] = 'SynVM';
 	BaseHandler.prototype[thisSymbolIterator] = undefined;
 
 	function defaultFactory(object) {
