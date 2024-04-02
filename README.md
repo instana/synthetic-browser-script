@@ -168,21 +168,40 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
     npx synb -f examples/browserscripts/api-sample-actions.js --delay --loglevel error
     ```
 * **Example #3:** Execute scripts with user credentials or global variables    
-    In your local test env, you can create a file of `synb.json` in the same directory or parent directory of your scripts to mockup global variables for test purpose. You can use `$secure.MY_SECURE_CREDENTIAL` to refer to predefined secure credentials in your script. 
+    To test and run script locally, you can create a file of `synb.json` in the same directory or parent directory of your scripts to mockup global variables for test purpose. You can use `$secure.MY_SECURE_CREDENTIAL` to refer to predefined secure credentials in your script. 
     [`$secure`](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts#secure) is one of the global variables Instana synthetic provided to help you accelerate and optimize script development.  
+    - Define global variables in synb.json
+        ```json
+        {
+          "secure": {
+            "username": "user1",
+            "password": "pass1"
+          }
+        }
+        ```
+    - Run script locally with CLI
+        ```bash
+        npx synb -f examples/bundledscripts/mytest.js
+        ```
+
+    To run test in Instana, create a credential with Instana Open API to store and access the secrets securely with the following steps:
+    - Make sure that you have proper [permission setting](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-setting-permissions-synthetic).
+    - Use [Synthetic OpenAPI](https://instana.github.io/openapi/#operation/createSyntheticCredential) to create a credential by passing credentialName and credentialValue.
     
-    ```json
-    {
-      "secure": {
-        "username": "user1",
-        "password": "pass1"
-      }
-    }
+    Then, in your browser script, use `$secure.credentialName` to refer to the created credential, for example, `$secure.username` or `$secure.password`.
+
+    ```javascript
+    // mytest.js
+    // input email
+    await findElementByIdAndSendKeys('email', $secure.username, timeout);
+    // input password
+    await findElementByIdAndSendKeys('password', $secure.password, timeout);
+    // click login
+    await findButtonByClassAndClick('in-button');
     ```
 
-    ```bash
-    npx synb -f examples/bundledscripts/mytest.js
-    ```
+    For more information about how to define and use global variables in Instana Synthetic, see [Instana Browser scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts#synthetic).
+    
 * **Example #4:** Execute multiple browser scripts
     
     If the business logic is really complex, containing everything in a single script is a bad experiences for developers, multiple script files are also supported for better management, especially managing them in Git repo. You can use bundled scripts and use `-f` to point the entry point. 
