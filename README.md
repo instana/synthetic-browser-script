@@ -167,10 +167,12 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
     ```bash
     npx synb -f examples/browserscripts/api-sample-actions.js --delay --loglevel error
     ```
-* **Example #3:** Execute scripts with user credentials or global variables    
-    To test and run script locally, you can create a file of `synb.json` in the same directory or parent directory of your scripts to mockup global variables for test purpose. You can use `$secure.MY_SECURE_CREDENTIAL` to refer to predefined secure credentials in your script. 
-    [`$secure`](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts#secure) is one of the global variables Instana synthetic provided to help you accelerate and optimize script development.  
-    - Define global variables in synb.json
+* **Example #3:** Execute scripts with user credentials
+    
+    You can use `$secure.MY_SECURE_CREDENTIAL` to refer to predefined secure credentials in your script. [`$secure`](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts#secure) is one of the [global variables](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts#global-variables) Instana synthetic provided to help you accelerate and optimize script development. For more information about how to use global variables in Instana Synthetic, see [Instana Browser scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts).
+
+    To test and run script locally, you can create a file of `synb.json` in the same directory or parent directory of your scripts to mockup global variables for test purpose. 
+    - Define user credentials in `synb.json`
         ```json
         {
           "secure": {
@@ -188,7 +190,7 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
     - Make sure that you have proper [permission setting](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-setting-permissions-synthetic).
     - Use [Synthetic OpenAPI](https://instana.github.io/openapi/#operation/createSyntheticCredential) to create a credential by passing credentialName and credentialValue.
     
-    Then, in your browser script, use `$secure.credentialName` to refer to the created credential, for example, `$secure.username` or `$secure.password`.
+    Then, in your browser script, use `$secure.credentialName` to refer to the created credential, for example, `$secure.username` or `$secure.password`. You can find the complete example in [`test_login.js`](./examples/browserscripts/test_login.js).
 
     ```javascript
     // mytest.js
@@ -199,16 +201,15 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
     // click login
     await findButtonByClassAndClick('in-button');
     ```
+    
+* **Example #4:** Execute multiple browser scripts with global variables
+    
+    If the business logic is really complex, containing everything in a single script is a bad experiences for developers, multiple script files are also supported for better maintenance, especially managing them in Git repo. You can use bundled scripts and use `-f` to point the entry point. 
+    
+    In this example `examples/bundledscripts`, we use multiple scripts and `$synthetic` global object to demonstrate how to write complex test scripts. You can use `$synthetic.var_name` to access predefined or customized environment and runtime variables in the script. For more information about how to use global variables in Instana Synthetic, see [Instana Browser scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts#synthetic).
 
-    For more information about how to define and use global variables in Instana Synthetic, see [Instana Browser scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts#synthetic).
-    
-* **Example #4:** Execute multiple browser scripts
-    
-    If the business logic is really complex, containing everything in a single script is a bad experiences for developers, multiple script files are also supported for better management, especially managing them in Git repo. You can use bundled scripts and use `-f` to point the entry point. 
-    
-    In this example `examples/bundledscripts`, we use multiple scripts and `$synthetic` global object to demonstrate how to write complex test scripts.
     The `$synthetic` object's properties can be accessed by user scripts. 
-    And `$synthetic.labels` can be defined as `"customProperties"` in Synthetic test configuration.
+    And the properties of `$synthetic.labels` can be defined as `"customProperties"` in Synthetic test configuration.
     
     In your local test env, you can define `examples/bundledscripts/synb.json` to mockup these variables for test purpose. 
     You can also put it in parent path in your project root directory.
