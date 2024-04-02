@@ -12,7 +12,7 @@
   - [🌟 Is it possible to do a select in a BrowserScript test](#-is-it-possible-to-do-a-select-in-a-browserscript-test)
   - [🌟 How to handle Shadow DOM elements](#-how-to-handle-shadow-dom-elements)
   - [🌟 How to verify specific text in the page contents with partial matching](#-how-to-verify-specific-text-in-the-page-contents-with-partial-matching)
-  - [🌟 How to login UI with account enabled Two-factor authentication](#🌟-how-to-login-ui-with-account-enabled-two-factor-authentication)
+  - [🌟 How to login UI with account enabled Two-factor authentication](#-how-to-login-ui-with-account-enabled-two-factor-authentication)
 
 
 
@@ -254,5 +254,5 @@ Instana Synthetic provides a solution to support 2FA (two-factor authentication)
     ```
 5. Navigate to the MFA UI. Find the web element and then use this token as the input to sendKeys to pass 2FA.
     ```javascript
-    element.sendKeys(token) 
+    await element.sendKeys(token) 
     ```
