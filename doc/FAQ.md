@@ -12,6 +12,7 @@
   - [🌟 Is it possible to do a select in a BrowserScript test](#-is-it-possible-to-do-a-select-in-a-browserscript-test)
   - [🌟 How to handle Shadow DOM elements](#-how-to-handle-shadow-dom-elements)
   - [🌟 How to verify specific text in the page contents with partial matching](#-how-to-verify-specific-text-in-the-page-contents-with-partial-matching)
+  - [🌟 How to login UI with account enabled Two-factor authentication](#🌟-how-to-login-ui-with-account-enabled-two-factor-authentication)
 
 
 
@@ -236,3 +237,22 @@ console.log(">>>>>>>>>>>>>>>>>>>", "Action Result found");
 }
 ```
 ![selenium-command](imgs/selenium-waitForElementVisible.png)
+
+## 🌟 How to login UI with account enabled Two-factor authentication
+Instana Synthetic provides a solution to support 2FA (two-factor authentication) when logging in websites. You can follow steps below to pass 2FA. For the complete test script, see [this example](../examples/browserscripts/test_login.js).
+
+1. Get the TOTP key that will be provided to 3rd-party library to create the MFA token (choosing the **Can't scan the QR code** option or **Problem scanning? enter a code instead**).
+2. Create a Synthetic Credential for TOTP key using the [Instana Open API](https://instana.github.io/openapi/#operation/createSyntheticCredential).
+3. Then in your browser test, you can use the `totp-generator` to create a time-based 2FA token whenever you need to input it. First you must import the library into your script.
+
+    ```javascript
+    const totp = require("totp-generator");
+    ```
+4. Then pass the key to the `totp-generator` to generate the MFA token
+    ```javascript
+    let token = totp($secure.MFA_KEY);
+    ```
+5. Navigate to the MFA UI. Find the web element and then use this token as the input to sendKeys to pass 2FA.
+    ```javascript
+    element.sendKeys(token) 
+    ```
