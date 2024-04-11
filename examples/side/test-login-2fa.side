@@ -1,0 +1,146 @@
+{
+  "id": "8cde6a45-4959-43c3-91d3-fcab261b65e9",
+  "version": "2.0",
+  "name": "test-pink",
+  "url": "https://test-instana.pink.instana.rocks",
+  "tests": [{
+    "id": "e79e3097-b8d2-412a-8c9e-986b10dcc2da",
+    "name": "pink-login",
+    "commands": [{
+      "id": "a3c31de2-0285-4e24-8a7a-5330a5dac9a2",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "98b7df8f-ec53-47f9-b7a0-0eedbfc64ff0",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "83ae509f-4247-4acc-ab99-46ef4c620f4f",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "${$secure.username}"
+    }, {
+      "id": "407d96f7-4e1b-47a4-b871-b72d70b70266",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//span/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3724ead8-6fbc-4621-9ab9-bcc3e1ea885b",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//span/input", "xpath:position"]
+      ],
+      "value": "${$secure.password}"
+    }, {
+      "id": "99c0f08d-22b1-469c-8fb4-c399bfd1cb34",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[contains(.,'Sign In')]",
+      "targets": [
+        ["css=.in-button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Sign In')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "78fdb76c-8708-425b-823e-294ecff7f7ee",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "id=password",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8015001e-e352-4f8f-a75f-5a0b136415da",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ec51296b-4d16-4167-ac83-ba87f89cc0c7",
+      "comment": "Generate a TOTP token from a TOTP key",
+      "command": "executeScript",
+      "target": "return $browser.generateTOTPToken($secure.totpKey);",
+      "targets": [],
+      "value": "totpToken"
+    }, {
+      "id": "3cbc306a-ed33-46bf-9923-92752b0466f2",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [],
+      "value": "${totpToken}"
+    }, {
+      "id": "99c0f08d-22b1-469c-8fb4-c399bfd1cb34",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[contains(.,'Sign In')]",
+      "targets": [
+        ["css=.in-button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Sign In')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d3535f4a-fbe8-4a49-b72b-98c20fbdd6fa",
+      "comment": "",
+      "command": "click",
+      "target": "id=main-nav-synthetics",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "78fdb76c-8708-425b-823e-294ecff7f7ee",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "xpath=//a[contains(*, 'Locations')]",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "2bbca418-d564-4927-b83e-8ce1fde14604",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["e79e3097-b8d2-412a-8c9e-986b10dcc2da"]
+  }],
+  "urls": ["https://test-instana.pink.instana.rocks"],
+  "plugins": []
+}
