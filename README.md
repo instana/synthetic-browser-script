@@ -190,7 +190,7 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
     - Make sure that you have proper [permission setting](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-setting-permissions-synthetic).
     - Use [Synthetic OpenAPI](https://instana.github.io/openapi/#operation/createSyntheticCredential) to create a credential by passing credentialName and credentialValue.
     
-    Then, in your browser script, use `$secure.credentialName` to refer to the created credential, for example, `$secure.username` or `$secure.password`. You can find the complete example in [`test_login.js`](./examples/browserscripts/test_login.js).
+    Then, in your browser script, use `$secure.credentialName` to refer to the created credential, for example, `$secure.username` or `$secure.password`. You can find the complete example in [`test_login_2fa.js`](./examples/browserscripts/test_login_2fa.js).
 
     ```javascript
     // mytest.js

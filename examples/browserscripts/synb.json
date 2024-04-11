@@ -1,0 +1,10 @@
+{
+  "synthetic": {
+    "url": "your_url"
+  },
+  "secure": {
+    "username": "your_username",
+    "password": "your_password",
+    "totpKey": "your_TOTP_token"
+  }
+}

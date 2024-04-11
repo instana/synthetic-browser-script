@@ -1,12 +1,12 @@
 import { Entry, Page, RumMetrics, Har } from "har-format";
-export declare type HisEntry = {
+export type HisEntry = {
     sender: string;
     type: string;
     url: string;
     value: string;
     rid?: string;
 };
-export declare type BrowserInfo = {
+export type BrowserInfo = {
     name: string;
     version: string;
     platform: string;
@@ -27,8 +27,8 @@ export declare enum HisEntryType {
     TTFB = "TTFB",
     Other = "Other"
 }
-export declare type HisValueType = HisValueLoad | Entry | string;
-export declare type HisValueLoad = {
+export type HisValueType = HisValueLoad | Entry | string;
+export type HisValueLoad = {
     timing: PerformanceTiming;
     title?: string;
 };

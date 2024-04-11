@@ -1,0 +1,7 @@
+{
+  "secure": {
+    "username": "your_username",
+    "password": "your_password",
+    "totpKey": "your_TOTP_token"
+  }
+}

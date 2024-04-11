@@ -1,19 +1,11 @@
 /**
- * This is a sample login script with 2FA authentication.
- * You can not run it directly, unless you replace url, and $secure with acutal ones.
- * To local test local run, replace the constant values of url and $secure.
- * To run Synthetic test in Instana, create user credentials of user, pass, mfa_key with Instana Open API first.
+ * This is a sample script to demonstrate how to login with 2FA authentication.
+ * To local test local run, replace the variables of url and $secure in synb.json with actual values.
+ * To run Synthetic test in Instana, replace url with actual values, 
+ * and create user credentials of username, password, totpKey with Instana Open API first.
  */
-const url = `your website URL`;
-const totp = require("totp-generator");
+const url = $synthetic.url;
 const timeout = 20000;
-
-// You can remove this constant if you have defined user credentials in Instana.
-const $secure = {
-  username: global.$secure.user ?? "your email",
-  password: global.$secure.pass ?? "your password",
-  mfa_key: global.$secure.mfa_key ?? "your 2FA key",
-};
 
 async function findElementByIdAndSendKeys(id, keys, timeout) {
   await $browser.waitForAndFindElement($driver.By.id(id), timeout);
@@ -51,16 +43,10 @@ async function findButtonByClassAndClick(className) {
 
   console.log("================>", "Generate TOTP token");
   /**
-   * Generate a time-based 2FA token. It needs to be generated in runtime whenever you need to input it.
-   * The default settings of the 2FA token are: 30 second period, 6 digits.
-   * Settings can be provided as an optional second parameter inside an object.
-   * const token = totp("JBSWY3DPEHPK3PXP", {
-   *   digits: 8,
-   *   algorithm: "SHA-512",
-   *   period: 60,
-   * });
+   * Generate a a Time-based One-time Password (TOTP) token from a TOTP key. 
+   * It needs to be generated in runtime when you need to input it, since it will expire by 30 sec by default.
    */
-  let totp_token = totp($secure.mfa_key);
+  let totp_token = $browser.generateTOTPToken($secure.totpKey);
   console.log("================>", "Input 2FA token");
   await findElementByIdAndSendKeys("password", totp_token);
 

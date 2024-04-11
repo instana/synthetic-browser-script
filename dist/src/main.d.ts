@@ -1,4 +1,6 @@
 /// <reference types="node" />
+/// <reference types="node" />
+/// <reference types="node" />
 import * as cproc from "child_process";
 import * as driver from "selenium-webdriver";
 import * as command from "selenium-webdriver/lib/command";
@@ -7,6 +9,7 @@ import { ScriptRunnerOption } from "./runoption";
 import { UserUtil } from "./user";
 import { BrowserInfo } from "./common/his-entry";
 import { WdioSelector } from "./prepare/inject/webdriverio/utils";
+import { TOTPOptions } from "./prepare/inject/mf-authentication";
 import { Network } from "./network";
 import { CProxyConfig, FFProxyConfig } from "./network";
 import { IWorld } from "@cucumber/cucumber";
@@ -60,6 +63,22 @@ declare module 'selenium-webdriver' {
         deleteHostnameFromAllowlist(hostname: string): Promise<string>;
         deleteHostnamesFromAllowlist(hostnameArr: string[]): Promise<string>;
         setAuthentication(authName: string, authPass: string): Promise<void>;
+        /**
+         * Generate a Time-based One-time Password (TOTP) token from a TOTP key.
+         *
+         * It needs to be generated in runtime when you need to input it.
+         *
+         * The default token settings are:
+         * - SHA-1
+         * - 30-second epoch interval
+         * - 6-digit tokens
+         *
+         * Settings can be provided as an optional second parameter inside an object.
+         * @param {string} key  A TOTP key. Keys provided must be base32 strings
+         * @param {TOTPOptions} options  Optional Settings e.g. {digits: 8, algorithm: "SHA-512", period: 60}
+         * @returns {string} A Time-based One-time Password (TOTP) token
+         */
+        generateTOTPToken(key: string, options?: TOTPOptions): string;
         setProxyAuthentication(authName: string, authPass: string): Promise<void>;
         setProxy(proxyURL: string | URL, noProxy?: string): Promise<void>;
         setProxyPAC(pacScriptURL: string, noProxy?: string, authMap?: Map<string, any>): Promise<void>;

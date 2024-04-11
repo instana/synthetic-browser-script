@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { ThenableWebDriver } from "selenium-webdriver";
 import { URL } from "url";
 export declare enum FFProxyType {
