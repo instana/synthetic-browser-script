@@ -1,8 +1,8 @@
 {
   "id": "8cde6a45-4959-43c3-91d3-fcab261b65e9",
   "version": "2.0",
-  "name": "test-pink",
-  "url": "https://test-instana.pink.instana.rocks",
+  "name": "test-login-2fa",
+  "url": "https://xxxx",
   "tests": [{
     "id": "e79e3097-b8d2-412a-8c9e-986b10dcc2da",
     "name": "pink-login",
@@ -25,6 +25,13 @@
         ["xpath=//input[@id='email']", "xpath:attributes"],
         ["xpath=//label/input", "xpath:position"]
       ],
+      "value": ""
+    }, {
+      "id": "03e23d25-38e3-4051-81ff-740109350ee8",
+      "comment": "",
+      "command": "echo",
+      "target": "Input email",
+      "targets": [],
       "value": ""
     }, {
       "id": "83ae509f-4247-4acc-ab99-46ef4c620f4f",
@@ -53,6 +60,13 @@
       ],
       "value": ""
     }, {
+      "id": "03e23d25-38e3-4051-81ff-740109350ee8",
+      "comment": "",
+      "command": "echo",
+      "target": "Input password",
+      "targets": [],
+      "value": ""
+    }, {
       "id": "3724ead8-6fbc-4621-9ab9-bcc3e1ea885b",
       "comment": "",
       "command": "type",
@@ -78,17 +92,17 @@
       ],
       "value": ""
     }, {
-      "id": "78fdb76c-8708-425b-823e-294ecff7f7ee",
-      "comment": "",
-      "command": "waitForElementPresent",
-      "target": "id=password",
-      "targets": [],
-      "value": ""
-    }, {
       "id": "8015001e-e352-4f8f-a75f-5a0b136415da",
       "comment": "",
       "command": "click",
       "target": "id=password",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "03e23d25-38e3-4051-81ff-740109350ee8",
+      "comment": "",
+      "command": "echo",
+      "target": "Generate a TOTP token from a TOTP key",
       "targets": [],
       "value": ""
     }, {
@@ -99,12 +113,26 @@
       "targets": [],
       "value": "totpToken"
     }, {
+      "id": "03e23d25-38e3-4051-81ff-740109350ee8",
+      "comment": "",
+      "command": "echo",
+      "target": "Input TOTP token",
+      "targets": [],
+      "value": ""
+    }, {
       "id": "3cbc306a-ed33-46bf-9923-92752b0466f2",
       "comment": "",
       "command": "type",
       "target": "id=password",
       "targets": [],
       "value": "${totpToken}"
+    }, {
+      "id": "03e23d25-38e3-4051-81ff-740109350ee8",
+      "comment": "",
+      "command": "echo",
+      "target": "Login with two-factor authentication",
+      "targets": [],
+      "value": ""
     }, {
       "id": "99c0f08d-22b1-469c-8fb4-c399bfd1cb34",
       "comment": "",
@@ -116,6 +144,13 @@
         ["xpath=//div[3]/button", "xpath:position"],
         ["xpath=//button[contains(.,'Sign In')]", "xpath:innerText"]
       ],
+      "value": ""
+    }, {
+      "id": "03e23d25-38e3-4051-81ff-740109350ee8",
+      "comment": "",
+      "command": "echo",
+      "target": "Verify UI dashboard",
+      "targets": [],
       "value": ""
     }, {
       "id": "d3535f4a-fbe8-4a49-b72b-98c20fbdd6fa",
@@ -130,17 +165,17 @@
       "command": "waitForElementPresent",
       "target": "xpath=//a[contains(*, 'Locations')]",
       "targets": [],
-      "value": ""
+      "value": "15000"
     }]
   }],
   "suites": [{
     "id": "2bbca418-d564-4927-b83e-8ce1fde14604",
-    "name": "Default Suite",
+    "name": "Test Login",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
     "tests": ["e79e3097-b8d2-412a-8c9e-986b10dcc2da"]
   }],
-  "urls": ["https://test-instana.pink.instana.rocks"],
+  "urls": ["https://xxxx"],
   "plugins": []
 }
