@@ -1,7 +1,7 @@
 /**
  * This is a sample script to demonstrate how to login with 2FA authentication.
  * To local test local run, replace the variables of url and $secure in synb.json with actual values.
- * To run Synthetic test in Instana, replace url with actual values, 
+ * To run Synthetic tests in Instana, replace the url with the actual value, 
  * and create user credentials of username, password, totpKey with Instana Open API first.
  */
 const url = $synthetic.url;
@@ -43,8 +43,9 @@ async function findButtonByClassAndClick(className) {
 
   console.log("================>", "Generate TOTP token");
   /**
-   * Generate a a Time-based One-time Password (TOTP) token from a TOTP key. 
-   * It needs to be generated in runtime when you need to input it, since it will expire by 30 sec by default.
+   * Generate a Time-based One-time Password (TOTP) token from a TOTP key. 
+   * The TOTP token needs to be generated in runtime whenever you need to input it, 
+   * since it will expire in 30 s by default.
    */
   let totp_token = $browser.generateTOTPToken($secure.totpKey);
   console.log("================>", "Input 2FA token");
