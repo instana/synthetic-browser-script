@@ -239,7 +239,7 @@ console.log(">>>>>>>>>>>>>>>>>>>", "Action Result found");
 ![selenium-command](imgs/selenium-waitForElementVisible.png)
 
 ## 🌟 How to login with account enabled Two-factor authentication
-Instana Synthetic provides a solution to support 2FA (two-factor authentication) when logging in websites in both BrowserScript and Selenium SIDE script tests. You can follow steps below to pass 2FA. For the complete test script, see [BrwoserScript example](../examples/browserscripts/test_login_2fa.js) and [Selenium SIDE example](../examples/side/test-login-2fa.side). To local test local run, replace the variables of `url` and `$secure` in `synb.json` with actual values.
+Instana Synthetic provides a solution to support 2FA (two-factor authentication) when logging in websites in both BrowserScript and Selenium SIDE script tests. You can follow steps below to pass 2FA. For the complete test script, see [BrowserScript example](../examples/browserscripts/test_login_2fa.js) and [Selenium SIDE example](../examples/side/test-login-2fa.side). To local test local run, replace the variables of `url` and `$secure` in `synb.json` with actual values.
 
 1. Get the TOTP key that will be provided to create the TOTP token to login with 2FA (choosing the **Can't scan the QR code** option or **Problem scanning? enter a code instead**).
 2. Create a Synthetic Credential for TOTP key using the [Instana Open API](https://instana.github.io/openapi/#operation/createSyntheticCredential).
