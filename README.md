@@ -3,7 +3,7 @@
 [![Node Support](https://img.shields.io/badge/node-16.x-brightgreen.svg)](https://www.npmjs.com/package/%40instana/synthetic-browser-script)
 [![Selenium Support](https://img.shields.io/badge/selenium-4.x-brightgreen.svg)](https://www.selenium.dev/selenium/docs/api/javascript/module/selenium-webdriver/lib/webdriver_exports_WebDriver.html)
 
-[![Banner](doc/imgs/sbs-banner.png)](https://pages.github.ibm.com/instana/instana-knowledge-center/synthetic-browser-testing/overview/)
+[![Banner](doc/imgs/sbs-banner.png)](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-using-browser-scripts)
 
 
 - [Instana Synthetic Browser Script](#instana-synthetic-browser-script)
@@ -27,7 +27,7 @@
 
 
 
-#### [Homepage](https://www.ibm.com/docs/en/instana-observability/current?topic=instana-synthetic-monitoring) &bullet; [Developer Guide](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-using-browser-scripts-beta) &bullet; [API Reference](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-api-reference) &bullet;
+#### [Homepage](https://www.ibm.com/docs/en/instana-observability/current?topic=instana-synthetic-monitoring) &bullet; [Developer Guide](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-using-browser-scripts) &bullet; [API Reference](https://www.ibm.com/docs/en/instana-observability/current?topic=scripts-browser-api-reference) &bullet;
 
 This is a local runner can accelerate your Synthetic browser testing on-boarding. It provides totally the same testing results as Instana Synthetic thus can save your time in developing and testing Synthetic scripts locally. As a script writer you may have following requirements:
 
@@ -156,20 +156,20 @@ All the test results including HAR file, videos, screenshots, browser log can be
 
 ## 🌟 Test with CLI
 #### Test with CLI Options
-Create a folder for your test scripts and use `-f, --file` to specify the entry point of the test scripts. The test results will be put in the same folder. Synthetic-browser-script comes with examples of [different browser test types](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-using-browser-scripts-beta#browser-script-test-types) as `Browser Script`, `Selenium IDE Script`, `single` or `bundled` script in `node_modules/@instana/synthetic-browser-script/examples`. Will take them as examples. For the examples with proxy demonstration as `examples/browserscripts/api-sample-proxy.js` and `examples/side/api-sample-browserapi.side`, you need to change the proxy to the valid one before running it. 
+Create a folder for your test scripts and use `-f, --file` to specify the entry point of the test scripts. The test results will be put in the same folder. Synthetic-browser-script comes with examples of [different browser test types](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-using-browser-scripts#browser-script-test-types) as `Browser Script`, `Selenium IDE Script`, `single` or `bundled` script in `node_modules/@instana/synthetic-browser-script/examples`. Will take them as examples. For the examples with proxy demonstration as `examples/browserscripts/api-sample-proxy.js` and `examples/side/api-sample-browserapi.side`, you need to change the proxy to the valid one before running it. 
 
 * **Example #1:** Use `npx synb --help` to check all the CLI options. 
 
 * **Example #2:** Execute browser script test
     
-    Instana Synthetic browser testing supports Selenium based APIs, and additional more than 30 extended browser testing APIs. Refer to [Browser Testing API](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-api-reference) reference for useful browser testing APIs. The examples in `examples/browserscripts` demonstrate how to use these APIs. Run a demo test as below. `--delay` `--loglevel` are optional. `--delay` can make test fast by delaying cleanup work. `--loglevel` can set user log level. 
+    Instana Synthetic browser testing supports Selenium based APIs, and additional more than 30 extended browser testing APIs. Refer to [Browser Testing API](https://www.ibm.com/docs/en/instana-observability/current?topic=scripts-browser-api-reference) reference for useful browser testing APIs. The examples in `examples/browserscripts` demonstrate how to use these APIs. Run a demo test as below. `--delay` `--loglevel` are optional. `--delay` can make test fast by delaying cleanup work. `--loglevel` can set user log level. 
 
     ```bash
     npx synb -f examples/browserscripts/api-sample-actions.js --delay --loglevel error
     ```
 * **Example #3:** Execute scripts with user credentials
     
-    You can use `$secure.MY_SECURE_CREDENTIAL` to refer to predefined secure credentials in your script. [`$secure`](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts#secure) is one of the [global variables](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts#global-variables) Instana synthetic provided to help you accelerate and optimize script development. For more information about how to use global variables in Instana Synthetic, see [Instana Browser scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts).
+    You can use `$secure.MY_SECURE_CREDENTIAL` to refer to predefined secure credentials in your script. [`$secure`](https://www.ibm.com/docs/en/instana-observability/current?topic=scripts-browser#secure) is one of the [global variables](https://www.ibm.com/docs/en/instana-observability/current?topic=scripts-browser#global-variables) Instana synthetic provided to help you accelerate and optimize script development. For more information about how to use global variables in Instana Synthetic, see [Instana Browser scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=scripts-browser).
 
     To test and run script locally, you can create a file of `synb.json` in the same directory or parent directory of your scripts to mockup global variables for test purpose. 
     - Define user credentials in `synb.json`
@@ -206,7 +206,7 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
     
     If the business logic is really complex, containing everything in a single script is a bad experiences for developers, multiple script files are also supported for better maintenance, especially managing them in Git repo. You can use bundled scripts and use `-f` to point the entry point. 
     
-    In this example `examples/bundledscripts`, we use multiple scripts and `$synthetic` global object to demonstrate how to write complex test scripts. You can use `$synthetic.var_name` to access predefined or customized environment and runtime variables in the script. For more information about how to use global variables in Instana Synthetic, see [Instana Browser scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts#synthetic).
+    In this example `examples/bundledscripts`, we use multiple scripts and `$synthetic` global object to demonstrate how to write complex test scripts. You can use `$synthetic.var_name` to access predefined or customized environment and runtime variables in the script. For more information about how to use global variables in Instana Synthetic, see [Instana Browser scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=scripts-browser#synthetic).
 
     The `$synthetic` object's properties can be accessed by user scripts. 
     And the properties of `$synthetic.labels` can be defined as `"customProperties"` in Synthetic test configuration.
@@ -274,10 +274,10 @@ After test with CLI, you can create your Synthetic test in Instana.
 
 Instana Browser testing test types:
 - [Browser Simple test: Load a webpage URL with full browser](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-endpoints-synthetic-tests)
-- [Browser script: Node.js based scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-browser-scripts) 
+- [Browser script: Node.js based scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=scripts-browser) 
     - Browser scripts: Single browser testing script
     - Browser scripts: Bundled browser testing scripts
-- [Selenium IDE Script: Selenium IDE recorded scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-selenium-ide-scripts)
+- [Selenium IDE Script: Selenium IDE recorded scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=scripts-selenium-ide)
 
 
 Use [Instana Synthetic Monitoring UI](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-endpoints-synthetic-tests) to create your test by using the wizard.
