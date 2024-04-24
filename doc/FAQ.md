@@ -25,7 +25,7 @@ It can provide you the benefits:
     Even though you can run your scripts successfully locally with Selenium IDE plugin, you may not run it successfully in Instana because of popup windows. Usually you need to close the popup window before your actions. The Synthetic-browser-script local runner will provide you clear user profiles as end user experience. And you can see what happened when full browser prompted and perform your script actions.
 * **Instana extended browser testing APIs**
     
-    If you would like to use [Instana extended browser testing APIs](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-selenium-ide-scripts#expanding-testing-capabilities-in-selenium-ide-scripts), you can use the Synthetic-browser-script local runner to test it. It provides the same runtime as Instana Synthetic browser engine. 
+    If you would like to use [Instana extended browser testing APIs](https://www.ibm.com/docs/en/instana-observability/current?topic=scripts-selenium-ide#expanding-testing-capabilities-in-selenium-ide-scripts), you can use the Synthetic-browser-script local runner to test it. It provides the same runtime as Instana Synthetic browser engine. 
 
 ## 🌟 How to resolve the issue of element is not clickable
 
@@ -170,7 +170,7 @@ In Selenium IDE script, you can use WAIT command as the example below:
 ```
 
 ## 🌟 How to take a screenshot in Selenium IDE script
-You can use `runScript` or `executeScript` command in Selenium IDE scripts to call [Instana extended APIs](https://www.ibm.com/docs/en/instana-observability/current?topic=beta-selenium-ide-scripts#expanding-testing-capabilities-in-selenium-ide-scripts).
+You can use `runScript` or `executeScript` command in Selenium IDE scripts to call [Instana extended APIs](https://www.ibm.com/docs/en/instana-observability/current?topic=scripts-selenium-ide#expanding-testing-capabilities-in-selenium-ide-scripts).
 ```json
 {
 "id": "e781c454-0080-447a-b905-7183443956f3",
