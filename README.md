@@ -46,7 +46,7 @@ Chromium, Mozilla Firefox, Node.js runtime.
 
 ☑️ Google Chrome / Chromium<br>
 ☑️ Mozilla Firefox<br>
-☑️ Node.js v16.x<br>
+☑️ Node.js v18.x<br>
 ☑️ selenium-webdriver v4.1.2
 
 
@@ -56,13 +56,13 @@ Chromium, Mozilla Firefox, Node.js runtime.
 
 You can use [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) to install Node.js if you don't have one.
 
-Node.js v16 is recommended. 
+Node.js v18 is recommended. 
 
 ```bash
-nvm install 16.15.1
+nvm install v18.19.1
 
 node --version
-v16.15.1
+v18.19.1
 ```
 #### 2. Install Browser Drivers
 
