@@ -1,6 +1,6 @@
 # Instana Synthetic Browser Script
 
-[![Node Support](https://img.shields.io/badge/node-16.x-brightgreen.svg)](https://www.npmjs.com/package/%40instana/synthetic-browser-script)
+[![Node Support](https://img.shields.io/badge/node-18.x-brightgreen.svg)](https://www.npmjs.com/package/%40instana/synthetic-browser-script)
 [![Selenium Support](https://img.shields.io/badge/selenium-4.x-brightgreen.svg)](https://www.selenium.dev/selenium/docs/api/javascript/module/selenium-webdriver/lib/webdriver_exports_WebDriver.html)
 
 [![Banner](doc/imgs/sbs-banner.png)](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-using-browser-scripts)
@@ -63,6 +63,11 @@ nvm install v18.19.1
 
 node --version
 v18.19.1
+
+# if you have multiple versions of Node.js installed, you can switch Node.js version with nvm
+nvm list
+nvm alias default v18.19.1
+nvm use v18.19.1
 ```
 #### 2. Install Browser Drivers
 
