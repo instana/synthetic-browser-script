@@ -39,6 +39,26 @@ export declare class PasedHisEntry {
     value: HisValueType;
     toString: () => string;
 }
+export declare enum ResourceType {
+    Document = "document",
+    StyleSheet = "stylesheet",
+    Image = "image",
+    Font = "font",
+    Script = "script",
+    XHR = "xhr",
+    Fetch = "fetch",
+    Ping = "ping",
+    Beacon = "beacon",
+    WebSocket = "websocket",
+    EventSource = "eventsource",
+    Media = "media",
+    Other = "other"
+}
+export declare const resourceTypeByExtension: Map<string, ResourceType>;
+export declare function fromMimeType(mimeType: string | null): ResourceType;
+export declare function fromURL(url: string): ResourceType | null;
+export declare function fromCustomizedResourceType(_resourceType: string): ResourceType | null;
+export declare function resolveHAREntryResourceType(entry: Entry): ResourceType;
 export declare class HisHarHelper {
     private pageNumber;
     private lastRID;

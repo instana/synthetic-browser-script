@@ -1,6 +1,6 @@
 {
   "name": "@instana/synthetic-browser-script",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "A local runner to test and debug your browser scripts locally with CLI",
   "main": "dist/sbs-playback.js",
   "typings": "dist/src/main.d.ts",
