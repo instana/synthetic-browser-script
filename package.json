@@ -13,7 +13,6 @@
     "dist/src/network.d.ts",
     "dist/src/user",
     "dist/src/prepare/inject/mf-authentication.d.ts",
-    "dist/src/common/his-entry.d.ts",
     "dist/bridge.js",
     "dist/events.js",
     "dist/setup-node-sandbox.js",
