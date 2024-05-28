@@ -41,15 +41,16 @@
 	"id": "d13e50bd-f698-4a04-9420-701a21dcde8d",
 	"comment": "",
 	"command": "waitForElementPresent",
-	"target": "id=result-stats",
-	"targets": [
-		["id=result-stats", "id"],
-		["css=#result-stats", "css:finder"],
-		["xpath=//div[@id='result-stats']", "xpath:attributes"],
-		["xpath=//div[@id='slim_appbar']/div/div", "xpath:idRelative"],
-		["xpath=//div[7]/div/div/div/div/div", "xpath:position"]
-	],
+	"target": "id=logo",
+	"targets": [],
 	"value": "10000"
+	}, {
+	"id": "b49ff289-f041-44f1-836b-ba7e993c3f07",
+	"comment": "",
+	"command": "executeScript",
+	"target": "$browser.takeScreenshot()",
+	"targets": [],
+	"value": ""
 	}]
 }],
 "suites": [{
