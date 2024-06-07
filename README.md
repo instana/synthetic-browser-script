@@ -47,7 +47,7 @@ Chromium, Mozilla Firefox, Node.js runtime.
 ☑️ Google Chrome / Chromium<br>
 ☑️ Mozilla Firefox<br>
 ☑️ Node.js v18.x<br>
-☑️ selenium-webdriver v4.1.2
+☑️ selenium-webdriver v4.20.0
 
 
 ## 🍀 Pre-requisite
@@ -70,6 +70,9 @@ nvm alias default v18.19.1
 nvm use v18.19.1
 ```
 #### 2. Install Browser Drivers
+**You can skip this step since the version of 1.1.9.** 
+**Synthetic-browser-script will install the browser driver for you if required driver version can not be found in your system path.**
+The installed browser driver can be found in user home e.g. /home/username/.cache/selenium/ in ubuntu. You can still install it by yourself following the steps below. 
 
 All the driver implementations are provided by the browser vendors themselves.
 Make sure you get the correct version of driver for your browser. 
