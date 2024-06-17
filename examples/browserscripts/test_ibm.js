@@ -52,10 +52,10 @@ let accessShadowDOMAndClick = async (
   );
   await cookies.click();
 
-  console.log("Step3: I want to learn programming languages");
-  await scrollToViewAndClick("programming tab", $driver.By.id(`tab-link-3-default`), 10000);
-  await scrollToViewAndClick('Get started with programming language', $driver.By.css(`a[href*='data-analysis-using-python']`), 10000);
+  console.log("Step3: launching Get Starting page");
+  await scrollToViewAndClick("Get Started", $driver.By.id(`app`), 10000);
+  await scrollToViewAndClick('Why developers need it', $driver.By.css(`a[href*='awb-instructlab-why-developers-need-it']`), 10000);
 
   console.log("Step4: Move to summary page");
-  await scrollToViewAndClick('Summary',  $driver.By.linkText(`Summary`), 10000)
+  await scrollToViewAndClick('Summary and next page',  $driver.By.linkText(`Summary and next steps`), 10000)
 })();
