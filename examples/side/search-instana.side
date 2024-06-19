@@ -41,7 +41,7 @@
 	"id": "d13e50bd-f698-4a04-9420-701a21dcde8d",
 	"comment": "",
 	"command": "waitForElementPresent",
-	"target": "id=logo",
+	"target": "id=searchform",
 	"targets": [],
 	"value": "10000"
 	}, {

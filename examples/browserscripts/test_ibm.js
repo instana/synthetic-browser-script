@@ -1,4 +1,3 @@
-const { assert } = require("chai");
 let click = async (message, by, timeout = 60000) => {
   console.log(`Click on ${message} >> ${by} << `);
   try {
@@ -52,10 +51,12 @@ let accessShadowDOMAndClick = async (
   );
   await cookies.click();
 
-  console.log("Step3: I want to learn programming languages");
-  await scrollToViewAndClick("programming tab", $driver.By.id(`tab-link-3-default`), 10000);
-  await scrollToViewAndClick('Get started with programming language', $driver.By.css(`a[href*='data-analysis-using-python']`), 10000);
+  console.log("Step3: Move to Python");
+  await scrollToViewAndClick("Python language", $driver.By.css(`a[href*='languages/python/'] img`), 10000);
 
-  console.log("Step4: Move to summary page");
-  await scrollToViewAndClick('Summary',  $driver.By.linkText(`Summary`), 10000)
+  console.log("Step4: Move to blogs");
+  await scrollToViewAndClick('Blogs', $driver.By.css(`a[href*='/python/blogs'] span`), 10000);
+
+  console.log("Step5: Move to learning paths");
+  await scrollToViewAndClick('Learning paths',  $driver.By.xpath(`//span[contains(., 'Learning Paths')]`), 10000)
 })();
