@@ -9,8 +9,8 @@
 - [Instana Synthetic Browser Script](#instana-synthetic-browser-script)
       - [Homepage • Developer Guide • API Reference •](#homepage--developer-guide--api-reference-)
   - [🍀 Pre-requisite](#-pre-requisite)
-      - [1. Install Node.js Server](#1-install-nodejs-server)
-      - [2. Install Browser Drivers](#2-install-browser-drivers)
+      - [1. Supported Platforms](#1-supported-platforms)
+      - [2. Install Node.js Server](#2-install-nodejs-server)
   - [🚀 Get started in 60 seconds](#-get-started-in-60-seconds)
       - [1. Install Synthetic-browser-script from NPM](#1-install-synthetic-browser-script-from-npm)
       - [2. Run a Demo Test](#2-run-a-demo-test)
@@ -51,8 +51,17 @@ Chromium, Mozilla Firefox, Node.js runtime.
 
 
 ## 🍀 Pre-requisite
+#### 1. Supported Platforms
+macOS and Linux are supported by default. You can skip this step if you are using macOS or Linux.
+To set up your environment in Windows, you can install WSL 2 and then install any Linux distribution (i.e. Ubuntu).
+1. Follow [steps](https://learn.microsoft.com/en-us/windows/wsl/install) as described in the Windows Subsystem for Linux Setup.
+2. Install an [X Server and test GUI support](https://nirisarri.github.io/2020-11-03-how-to-install-and-run-intellij-idea-for-linux-in-wsl2/).
+In case `xeyes` doesn't work: check the inbound rules for `VcXsrv` windows server (Windows Security - Firewall & network protection - Advanced settings - Inbound rules). Allow the traffic for TCP protocol and restrict the Scope by including only your local IP address.
+3. Install chrome or chromium in your WSL 2 Linux.
 
-#### 1. Install Node.js Server
+The rest of the steps described in this document can now be performed on your Linux distribution.
+
+#### 2. Install Node.js Server
 
 You can use [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) to install Node.js if you don't have one.
 
@@ -69,40 +78,6 @@ nvm list
 nvm alias default v18.19.1
 nvm use v18.19.1
 ```
-#### 2. Install Browser Drivers
-**You can skip this step since the version of 1.1.9.** 
-**Synthetic-browser-script will install the browser driver for you if required driver version can not be found in your system path.**
-The installed browser driver can be found in user home e.g. /home/username/.cache/selenium/ in ubuntu. You can still install it by yourself following the steps below. 
-
-All the driver implementations are provided by the browser vendors themselves.
-Make sure you get the correct version of driver for your browser. 
-To quick start, you only need to install latest Chrome driver. Firefox is optional.
-
-* **Browser Driver Download Quick Reference**
-
-    |Browser	|Supported OS	|Maintained by	|Download	|
-    |-----------|---------------|---------------|-----------|
-    |Chromium/Chrome|macOS/Linux|Google|[Downloads](https://chromedriver.chromium.org/downloads)|
-    |Firefox|macOS/Linux|Mozilla|[Downloads](https://github.com/mozilla/geckodriver/releases)|
-
-* **Install and Test Browser Drivers**
-
-    ```bash
-    ln -fs /opt/webdriver/geckodriver /usr/bin/geckodriver
-    ln -fs /opt/webdriver/chromedriver /usr/bin/chromedriver 
-
-    firefox --version
-    Mozilla Firefox 100.0.2
-
-    geckodriver --version
-    geckodriver 0.31.0 (b617178ef491 2022-04-06 11:57 +0000)
-
-    google-chrome --version
-    Google Chrome 102.0.5005.115
-
-    chromedriver --version
-    ChromeDriver 102.0.5005.61
-    ```
 
 ## 🚀 Get started in 60 seconds
 
