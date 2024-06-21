@@ -8,6 +8,7 @@
   - [🌟 How to resolve StaleElementReferenceError](#-how-to-resolve-staleelementreferenceerror)
       - [1. Testing your locators can identify unique web element](#1-testing-your-locators-can-identify-unique-web-element)
       - [2. Locating the element again once it is attached to the DOM](#2-locating-the-element-again-once-it-is-attached-to-the-dom)
+  - [🌟 How to verify test result](#-how-to-verify-test-result)
   - [🌟 How to work with iframes and frames](#-how-to-work-with-iframes-and-frames)
   - [🌟 How to find one or more specific web elements](#-how-to-find-one-or-more-specific-web-elements)
   - [🌟 How to resolve no such element error](#-how-to-resolve-no-such-element-error)
@@ -134,6 +135,66 @@ await nameHtmlElement.sendKeys("Maria");
 ```
 Some users use try-catch-retry solutions. You can try to use Instana provided Retry Strategy by setting retry to 1 or 2 times from Instana test configuration UI dashboard. The Instana Retry Strategy will retry your test script at most 1 or 2 times until your test result is successful before sending the test result to Instana backend. Or you can search this `StaleElementReferenceError` to find more solutions in the browser testing field to address it in your test script code.
 
+## 🌟 How to verify test result
+How to ensure your test case is successful or not? In browser testing field, you are recommended to use **Assertions**, **Explicit WAIT** to verify your test results. Thus you can ensure your web page is loaded and rendered as expected. With Instana browser testing, you can also generate screenshot for your test execution and check console logs (**Echo** command in Selenium recorded scripts), browser logs, timeline chart. 
+
+Following commands can be helpful:
+```JSON
+{
+      "id": "938df959-9b65-4ae4-a2f5-59be6188ea5f",
+      "comment": "This is how to sleep for 5 seconds.",
+      "command": "pause",
+      "target": "5000",
+      "targets": [],
+      "value": ""
+},
+{
+    "id": "2d5c6b52-d2d7-4592-8052-87572a09e58b",
+     "comment": "This is how to take screenshot",
+     "command": "executeScript",
+     "target": "await $browser.takeScreenshot()",
+     "targets": [],
+     "value": ""
+}
+```
+
+Another troubleshooting tips shared was to add some Assertion commands like the one below:
+```JSON
+{
+    "id": "46eb59c2-5fd6-4481-b3e8-eaaddab79a69",
+    "comment": "This is one type of Assertions in browser testing",
+    "command": "assertTitle",
+    "target": "instana - Google Search",
+    "targets": [],
+    "value": ""
+}
+```
+
+Following code snippet is how to use Explicit Wait to verify your test in browser script test:
+```javascript
+await $browser.waitForAndFindElement($driver.By.xpath(`//h1[contains(text(), 'Websites & mobile apps')]`), 30000)
+await $browser.wait($driver.until.titleContains(`Websites – Websites & mobile apps`), 30000);
+```
+
+Also the following commands added in your recorded side file might be useful:
+```JSON
+{
+      "id": "615cb3e5-fe2a-4859-b0aa-9df52f22028f",
+      "comment": "This is Explicit Wait in browser testing",
+      "command": "waitForElementPresent",
+      "target": "id=mainmenu",
+      "targets": [],
+      "value": "30000"
+},
+{
+      "id": "03e23d25-38e3-4051-81ff-740109350ee8",
+      "comment": "This is how to add logging message in console logs",
+      "command": "echo",
+      "target": "Verify UI dashboard",
+      "targets": [],
+      "value": ""
+}
+```
 
 ## 🌟 How to work with iframes and frames
 Sometimes you might get a no such element error if your website using frames. To interact with the elements, we will need to first switch to the frame or iframe with `$browser.switchTo().frame(id: number | WebElement);`. In Instana Browser script test, you can use the code as below:
