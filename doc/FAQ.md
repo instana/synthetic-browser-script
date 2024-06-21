@@ -5,6 +5,9 @@
       - [1. Scroll to view and click](#1-scroll-to-view-and-click)
       - [2. Using ActionChains](#2-using-actionchains)
       - [3. Using MouseOver in Selenium IDE script](#3-using-mouseover-in-selenium-ide-script)
+  - [🌟 How to resolve StaleElementReferenceError](#-how-to-resolve-staleelementreferenceerror)
+      - [1. Testing your locators can identify unique web element](#1-testing-your-locators-can-identify-unique-web-element)
+      - [2. Locating the element again once it is attached to the DOM](#2-locating-the-element-again-once-it-is-attached-to-the-dom)
   - [🌟 How to work with iframes and frames](#-how-to-work-with-iframes-and-frames)
   - [🌟 How to find one or more specific web elements](#-how-to-find-one-or-more-specific-web-elements)
   - [🌟 How to resolve no such element error](#-how-to-resolve-no-such-element-error)
@@ -27,6 +30,8 @@ It can provide you the benefits:
     
     If you would like to use [Instana extended browser testing APIs](https://www.ibm.com/docs/en/instana-observability/current?topic=scripts-selenium-ide#expanding-testing-capabilities-in-selenium-ide-scripts), you can use the Synthetic-browser-script local runner to test it. It provides the same runtime as Instana Synthetic browser engine. 
 
+Selenium IDE is one open source recording tool to help users to generate **locators** (CSS selectors, XPath, id etc.) easily to identify web elements. However it also has some limitations e.g. it requires some manual work to add Explicit Wait commands, scrolling, Shadow DOM accessing etc. And it can not report test failures sometimes such as [element is not attached to the page document, element not interactable](https://github.com/SeleniumHQ/selenium-ide/issues/996#issuecomment-1068719019) which is known issues that Selenium IDE sometimes is incompatible with script runners. You are recommended to test your script locally with [Synthetic-browser-script](https://www.npmjs.com/package/%40instana/synthetic-browser-script) local runner which is provided by Instana. With this tool, you can see the full browser UI prompted and perform your actions in the test scripts to help you debug and troubleshooting. If you have complex testing logic, such as loops, you can also try to use Instana Synthetic [browser script tests](https://www.ibm.com/docs/en/instana-observability/current?topic=scripts-browser), which is javascript based. About how to add these manual steps to support Shadow DOM etc., you can refer to [the FAQ](#frequently-asked-questions). 
+
 ## 🌟 How to resolve the issue of element is not clickable
 
 This is a commonly asked questions. You may see your test failed with error message as `is not clickable at point (285,436) because another element <li> obscures it` or `Failed to execute command clickElement {} element not interactable`. To resolve this issue, you need to move your mouse to focus on the element. You can use the solutions as below:
@@ -35,7 +40,7 @@ This is a commonly asked questions. You may see your test failed with error mess
 This is a solution always works. You need to use JavaScript command to accomplish this. For Selenium IDE recorded script, you can use `runScript` or `executeScript` to call Instana extended APIs to use the same JavaScript code.
 
 ```javascript
-let element = await $browser.findElement(By.xpath(`//a[contains(.,'Customer stories')]`)); 
+let element = await $browser.waitForAndFindElement(By.xpath(`//a[contains(.,'Customer stories')]`), 30000); 
 await $browser.executeScript(`arguments[0].scrollIntoView()`, element); 
 await $browser.executeScript(`arguments[0].click()`, element)											
 ```
@@ -46,7 +51,7 @@ Or for Selenium IDE script
 "id": "b345d354-1d95-45d0-81ab-7c78695ed040",
 "comment": "",
 "command": "runScript",
-"target": "let element = await $browser.findElement(By.xpath(`//a[contains(.,'Customer stories')]`)); await $browser.executeScript(`arguments[0].scrollIntoView()`, element); await $browser.executeScript(`arguments[0].click()`, element)",
+"target": "let element = await $browser.waitForAndFindElement(By.xpath(`//a[contains(.,'Customer stories')]`), 30000); await $browser.executeScript(`arguments[0].scrollIntoView()`, element); await $browser.executeScript(`arguments[0].click()`, element)",
 "targets": [],
 "value": ""
 }, 
@@ -85,6 +90,51 @@ await driver.findElement(By.xpath(`//dds-megamenu-category-link[contains(.,\'Bri
   });
 ```
 
+## 🌟 How to resolve StaleElementReferenceError
+Sometimes you might encounter errors of `StaleElementReferenceError: stale element reference: element is not attached to the page document`. This is a common [selenium error](https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/#stale-element-reference-exception) usually happening as your code in the test script might have a reference to a web element that is no longer attached to the DOM (e.g. when the web page uses React or Vue). For troubleshooting and solutions, you can refer to the examples below:
+#### 1. Testing your locators can identify unique web element
+This issue might be because your locator (CSS selectors, XPath, id etc. the expression in `Target` property in Selenium IDE) returns multiple web elements, and can not identify unique one. Following example is one actual case that the CSS locator `a[href*='/#/home'] span` returns multiple web elements, which leads to sometimes test failed because of stale element reference. To test your locators, you can input it in browser -> More tools -> Web Developer tools. The good locator can highlight unique web element you expected. If you see multiple results matched as screenshot below, you can update or change your locators.
+![test-locators](imgs/test-locators.png)
+You can also choose different locators with Selenium IDE by clicking on `Target` property. You are recommended to choose one meaningful locator not depending on the position of the web element. A good locator can identify an unique web element and not easily affected by window size or UI position adjustment. 
+![selenium-locators](imgs/selenium-locators.png)
+
+#### 2. Locating the element again once it is attached to the DOM
+You can discard the current reference you hold and replace it, possibly by locating the element again once it is attached to the DOM. 
+
+Besides the item 1, the possible reasons for the web element getting stale can be: 
+- A page refresh
+- DOM update
+- Location of the web element being changed
+
+The two most usual reasons for the StaleElementReferenceError are that:
+- The selected web element to be interacted with is no longer present on the HTML web page
+- The selected web element was destroyed completely and recreated.
+
+Example code with StaleElementReferenceError:
+```javascript
+// retrieving an input HTML element from the page
+let nameHtmlElement = await $browser.findElement(nameInputBy);
+// setting a name in the input element
+await nameHtmlElement.sendKeys("John");
+
+// refreshing the page
+await $browser.navigate().refresh()
+
+// nameHtmlElement is now stale
+// trying to set a new name, but this will throw a StaleElementReferenceException
+await nameHtmlElement.sendKeys("Maria");
+```
+
+The possible solution is to find the element again before you use it.
+```javascript
+// refreshing the page
+await $browser.navigate().refresh()
+nameHtmlElement = await $browser.findElement(nameInputBy);
+await nameHtmlElement.sendKeys("Maria");
+```
+Some users use try-catch-retry solutions. You can try to use Instana provided Retry Strategy by setting retry to 1 or 2 times from Instana test configuration UI dashboard. The Instana Retry Strategy will retry your test script at most 1 or 2 times until your test result is successful before sending the test result to Instana backend. Or you can search this `StaleElementReferenceError` to find more solutions in the browser testing field to address it in your test script code.
+
+
 ## 🌟 How to work with iframes and frames
 Sometimes you might get a no such element error if your website using frames. To interact with the elements, we will need to first switch to the frame or iframe with `$browser.switchTo().frame(id: number | WebElement);`. In Instana Browser script test, you can use the code as below:
 ```javascript
@@ -119,7 +169,7 @@ $driver.By.xpath("//a[contains(@href,'Electronics')]")
 $driver.By.xpath(`//dds-footer-nav-item[contains(.,'Developer education')]`)
 ```
 
-In the Selenium IDE plugin, you can choose different locators by clicking the target if you find the default one is not as goog as enough. 
+In the Selenium IDE plugin, you can choose different locators by clicking the target if you find the default one is not as good as enough. 
 
 ![selenium-locators](imgs/selenium-locators.png)
 
