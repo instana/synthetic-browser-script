@@ -1,6 +1,6 @@
 # Frequently Asked Questions
 - [Frequently Asked Questions](#frequently-asked-questions)
-  - [🌟 Why don't Selenium recorded scripts run successfully in Instana](#-why-dont-selenium-recorded-scripts-run-successfully-in-instana)
+  - [🌟 Why a Selenium recorded script may not run successfully in Instana](#-why-a-selenium-recorded-script-may-not-run-successfully-in-instana)
   - [🌟 How to resolve the issue of element is not clickable](#-how-to-resolve-the-issue-of-element-is-not-clickable)
       - [1. Scroll to view and click](#1-scroll-to-view-and-click)
       - [2. Using ActionChains](#2-using-actionchains)
@@ -20,7 +20,7 @@
 
 
 
-## 🌟 Why don't Selenium recorded scripts run successfully in Instana
+## 🌟 Why a Selenium recorded script may not run successfully in Instana
 This issue is usually because you have existed cookies and history data in your browsers, thus you can not see popup windows such as accept cookies in front of your website. To avoid this issue, you are recommended to use Instana [Synthetic-browser-script](https://www.npmjs.com/package/%40instana/synthetic-browser-script) local runner to test your script locally after creating test script. 
 
 It can provide you the benefits:
