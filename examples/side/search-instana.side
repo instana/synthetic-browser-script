@@ -48,7 +48,7 @@
 	"id": "b49ff289-f041-44f1-836b-ba7e993c3f07",
 	"comment": "",
 	"command": "executeScript",
-	"target": "$browser.takeScreenshot()",
+	"target": "await $browser.takeScreenshot()",
 	"targets": [],
 	"value": ""
 	}]
