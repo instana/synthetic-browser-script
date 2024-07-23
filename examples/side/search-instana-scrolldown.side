@@ -1,0 +1,102 @@
+{
+	"id": "9ed7eb47-bf16-42aa-a486-0c7d99182726",
+	"version": "2.0",
+	"name": "Search-Instana",
+	"url": "https://www.google.com",
+	"tests": [
+		{
+			"id": "71306c19-6561-447c-b761-7af92b00f478",
+			"name": "A",
+			"commands": [
+				{
+					"id": "c6ccc11f-aab7-49b4-af71-6315647370da",
+					"comment": "",
+					"command": "open",
+					"target": "/",
+					"targets": [],
+					"value": ""
+				},
+				{
+					"id": "99075bf4-411e-4351-804d-e78f5d83824e",
+					"comment": "",
+					"command": "type",
+					"target": "name=q",
+					"targets": [
+						[
+							"name=q",
+							"name"
+						],
+						[
+							"css=.gLFyf",
+							"css:finder"
+						],
+						[
+							"xpath=//input[@name='q']",
+							"xpath:attributes"
+						],
+						[
+							"xpath=//input",
+							"xpath:position"
+						]
+					],
+					"value": "instana"
+				},
+				{
+					"id": "9f1b06f4-1cfb-4381-9566-2399742a46c2",
+					"comment": "",
+					"command": "sendKeys",
+					"target": "name=q",
+					"targets": [
+						[
+							"name=q",
+							"name"
+						],
+						[
+							"css=.gLFyf",
+							"css:finder"
+						],
+						[
+							"xpath=//input[@name='q']",
+							"xpath:attributes"
+						],
+						[
+							"xpath=//input",
+							"xpath:position"
+						]
+					],
+					"value": "${KEY_ENTER}"
+				},
+				{
+					"id": "d13e50bd-f698-4a04-9420-701a21dcde8d",
+					"comment": "",
+					"command": "waitForElementPresent",
+					"target": "css=#pnnext > span:nth-child(2)",
+					"targets": [],
+					"value": "20000"
+				},
+				{
+					"id": "b345d354-1d95-45d0-81ab-7c78695ed040",
+					"comment": "",
+					"command": "runScript",
+					"target": "const el = document.querySelector('#pnnext > span:nth-child(2)'); el.scrollIntoView(); el.click();",
+					"targets": [],
+					"value": ""
+				}
+			]
+		}
+	],
+	"suites": [
+		{
+			"id": "76395644-9101-473c-ad42-bda5c37e8de2",
+			"name": "SearchInstanaScrollDown",
+			"persistSession": false,
+			"parallel": false,
+			"timeout": 300,
+			"tests": ["71306c19-6561-447c-b761-7af92b00f478"]
+		}
+	],
+	"urls": [
+		"https://www.google.com/"
+	],
+	"plugins": []
+}
