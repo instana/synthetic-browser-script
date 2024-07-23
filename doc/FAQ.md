@@ -5,9 +5,11 @@
       - [1. Scroll to view and click](#1-scroll-to-view-and-click)
       - [2. Using ActionChains](#2-using-actionchains)
       - [3. Using MouseOver in Selenium IDE script](#3-using-mouseover-in-selenium-ide-script)
+      - [4. Using reasonable window size](#4-using-reasonable-window-size)
   - [🌟 How to resolve StaleElementReferenceError](#-how-to-resolve-staleelementreferenceerror)
       - [1. Testing your locators can identify unique web element](#1-testing-your-locators-can-identify-unique-web-element)
       - [2. Locating the element again once it is attached to the DOM](#2-locating-the-element-again-once-it-is-attached-to-the-dom)
+      - [3. Waiting for the page refreshed](#3-waiting-for-the-page-refreshed)
   - [🌟 How to verify test result](#-how-to-verify-test-result)
   - [🌟 How to work with iframes and frames](#-how-to-work-with-iframes-and-frames)
   - [🌟 How to find one or more specific web elements](#-how-to-find-one-or-more-specific-web-elements)
@@ -58,6 +60,26 @@ Or for Selenium IDE script
 }, 
 ```
 
+For Selenium IDE script, you need to use local runner to playback or test Instana advanced APIs e.g. `$browser.waitForAndFindElement` because Selenium IDE can not recognize them. If you still want to playback or test your scripts with Selenium IDE, you can try following JavaScript code as below. The `runScript` command uses `document.querySelector` which can be recognized by browsers. Here is the sample script [how to scroll down and click next page](../examples/side/search-instana-scrolldown.side) in google searched results. 
+```json
+{
+"id": "d13e50bd-f698-4a04-9420-701a21dcde8d",
+"comment": "",
+"command": "waitForElementPresent",
+"target": "css=#pnnext > span:nth-child(2)",
+"targets": [],
+"value": "20000"
+},
+{
+"id": "b345d354-1d95-45d0-81ab-7c78695ed040",
+"comment": "",
+"command": "runScript",
+"target": "const el = document.querySelector('#pnnext > span:nth-child(2)'); el.scrollIntoView(); el.click();",
+"targets": [],
+"value": ""
+}
+```
+
 #### 2. Using ActionChains
 Using ActionChains to move to the element and click.
 ```javascript
@@ -89,6 +111,20 @@ await driver.findElement(By.xpath(`//dds-megamenu-category-link[contains(.,\'Bri
       origin: element
     }).perform();
   });
+```
+#### 4. Using reasonable window size
+Some users may have a strange window size when they recording scripts with Selenium IDE. This is a common root cause of element not clickable because some web elements may be hidden and can not be clickable. To resolve this issue, you can simply remove the `setWindowSize` command to let Instana to adjust window size for you. Your script can still run successfully in selenium IDE.
+
+Or you can use JavaScript code to set max window size and use local runner to test it:
+```json
+{
+"id": "4f719a79-aa76-4dc8-a18b-7b46523ae0e6",
+"comment": "",
+"command": "executeScript",
+"target": "await $browser.manage().window().maximize();",
+"targets": [],
+"value": ""
+},  
 ```
 
 ## 🌟 How to resolve StaleElementReferenceError
@@ -134,6 +170,27 @@ nameHtmlElement = await $browser.findElement(nameInputBy);
 await nameHtmlElement.sendKeys("Maria");
 ```
 Some users use try-catch-retry solutions. You can try to use Instana provided Retry Strategy by setting retry to 1 or 2 times from Instana test configuration UI dashboard. The Instana Retry Strategy will retry your test script at most 1 or 2 times until your test result is successful before sending the test result to Instana backend. Or you can search this `StaleElementReferenceError` to find more solutions in the browser testing field to address it in your test script code.
+
+#### 3. Waiting for the page refreshed
+If above solutions still can not resolve this issue, try to use `pause` command or `await $browser.sleep` to sleep for a few seconds to wait until the page or iframe refreshed. Ensure that you have proper wait conditions as `Explicit Wait` in place for every action you take in your application. Always wait for the page to be “static” prior to locating elements and using them. One actual use case which faced this issue is when they switching tabs. There is something “happening” such as server call, JavaScript call etc. after switching tab, that takes a little time which is easily swamped by the speed of the test. Finally they found adding a little `pause` time and using Instana `retry` strategy can resolve their issues easily. To use Instana `retry` strategy, you can configure a retry value such as 2 in Instana test configuration page. Then your test will be executed at most three times until it is successful before sending the result to Instana backend.  
+```javascript
+// wait 5 seconds OR wait until tab is visible
+// click the tab
+// wait 5 seconds OR wait until button is visible
+// Click button
+await $browser.sleep(5000);
+```
+
+```json
+{
+"id": "75135e0f-5f38-4004-b0f2-fda657d73bb3",
+"comment": "",
+"command": "pause",
+"target": "2000",
+"targets": [],
+"value": ""
+},
+```
 
 ## 🌟 How to verify test result
 How to ensure your test case is successful or not? In browser testing field, you are recommended to use **Assertions**, **Explicit WAIT** to verify your test results. Thus you can ensure your web page is loaded and rendered as expected. With Instana browser testing, you can also generate screenshot for your test execution and check console logs (**Echo** command in Selenium recorded scripts), browser logs, timeline chart. 
