@@ -50,84 +50,6 @@
       ],
       "value": ""
     }, {
-      "id": "c165d2de-c57c-4df9-8a34-c3b56d833092",
-      "comment": "",
-      "command": "click",
-      "target": "id=project-search-input",
-      "targets": [
-        ["id=project-search-input", "id"],
-        ["name=query", "name"],
-        ["css=#project-search-input", "css:finder"],
-        ["xpath=//input[@id='project-search-input']", "xpath:attributes"],
-        ["xpath=//primer-text-field/div/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "98d05449-2302-4526-8d92-04404c4569fd",
-      "comment": "",
-      "command": "click",
-      "target": "id=project-search-input",
-      "targets": [
-        ["id=project-search-input", "id"],
-        ["name=query", "name"],
-        ["css=#project-search-input", "css:finder"],
-        ["xpath=//input[@id='project-search-input']", "xpath:attributes"],
-        ["xpath=//primer-text-field/div/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "eaeabccd-47f4-4c9b-aab6-6b9396e319df",
-      "comment": "",
-      "command": "doubleClick",
-      "target": "id=project-search-input",
-      "targets": [
-        ["id=project-search-input", "id"],
-        ["name=query", "name"],
-        ["css=#project-search-input", "css:finder"],
-        ["xpath=//input[@id='project-search-input']", "xpath:attributes"],
-        ["xpath=//primer-text-field/div/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "a34994de-ace5-4c08-8295-0cb67b256add",
-      "comment": "",
-      "command": "click",
-      "target": "id=project-search-input",
-      "targets": [
-        ["id=project-search-input", "id"],
-        ["name=query", "name"],
-        ["css=#project-search-input", "css:finder"],
-        ["xpath=//input[@id='project-search-input']", "xpath:attributes"],
-        ["xpath=//primer-text-field/div/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "68df3686-6230-4ab4-ae36-afeffef74899",
-      "comment": "",
-      "command": "click",
-      "target": "id=project-search-input",
-      "targets": [
-        ["id=project-search-input", "id"],
-        ["name=query", "name"],
-        ["css=#project-search-input", "css:finder"],
-        ["xpath=//input[@id='project-search-input']", "xpath:attributes"],
-        ["xpath=//primer-text-field/div/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "d09c4bb6-e4a2-4f88-80ad-58ea404d82bd",
-      "comment": "",
-      "command": "doubleClick",
-      "target": "id=project-search-input",
-      "targets": [
-        ["id=project-search-input", "id"],
-        ["name=query", "name"],
-        ["css=#project-search-input", "css:finder"],
-        ["xpath=//input[@id='project-search-input']", "xpath:attributes"],
-        ["xpath=//primer-text-field/div/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
       "id": "f9f152b9-32e7-4c23-9688-29fd80c8f978",
       "comment": "",
       "command": "click",
@@ -149,20 +71,6 @@
         ["css=.d-flex:nth-child(2) > .UnderlineNav-item", "css:finder"],
         ["xpath=//a[contains(@href, '/orgs/IBM/repositories')]", "xpath:href"],
         ["xpath=//nav/div/ul/li[2]/a", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "028e82b8-9dbe-4350-8f9f-8b3d2eb916a0",
-      "comment": "",
-      "command": "mouseOver",
-      "target": "id=repos-list-filter-input",
-      "targets": [
-        ["id=repos-list-filter-input", "id"],
-        ["name=repos-list-filter-inputname", "name"],
-        ["css=#repos-list-filter-input", "css:finder"],
-        ["xpath=//input[@id='repos-list-filter-input']", "xpath:attributes"],
-        ["xpath=//div[@id='repos-list-filter']/div/div/div/div/div[2]/input", "xpath:idRelative"],
-        ["xpath=//div/div/div/div/div[2]/input", "xpath:position"]
       ],
       "value": ""
     }, {
