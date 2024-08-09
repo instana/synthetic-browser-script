@@ -201,7 +201,7 @@ Create a folder for your test scripts and use `-f, --file` to specify the entry 
     npx synb -f examples/bundledscripts/mytest.js
     ```
 
-* **Example #5:** Execute selenium IDE scripts
+* **Example #5:** [Execute selenium IDE scripts](https://www.ibm.com/docs/en/instana-observability/current?topic=scripts-selenium-ide)
 
     The easiest way to create your own scripts is to use Selenium IDE to record and Synthetic-browser-script to playback.
     1. Download and install Selenium IDE [Firefox addon](https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/versions/) or [Chrome extension](https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd) in Firefox/Chrome browser. Restart the browser.
@@ -357,7 +357,7 @@ package.json
 
 * [Multiple browser scripts](https://github.com/instana/synthetic-browser-script/blob/main/examples/bundledtest.zip)
   
-### [Best Practice and Frequently Asked Questions](./doc/FAQ.md)
+### [Best Practice and Frequently Asked Questions](https://www.ibm.com/docs/en/instana-observability/current?topic=scripts-frequently-asked-questions)
 
 ## Licence
 [MIT](https://github.com/instana/synthetic-browser-script/blob/main/LICENSE)
