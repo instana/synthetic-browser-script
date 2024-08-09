@@ -1,0 +1,247 @@
+{
+  "id": "0de8dc44-5b94-4f15-9ae8-b2c2f9310304",
+  "version": "2.0",
+  "name": "GitHub",
+  "url": "https://github.com/ibm",
+  "tests": [{
+    "id": "0a60002f-7f4c-4adf-bd90-46d76850603f",
+    "name": "GitHub",
+    "commands": [{
+      "id": "20c8e0ca-f2af-463d-b961-029b1f465dbf",
+      "comment": "",
+      "command": "open",
+      "target": "https://github.com/ibm",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fd98b729-f2c8-4602-a384-2244ce3e6706",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1497x892",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a36220b0-6046-4c10-a951-eebbee8f30a9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.d-flex:nth-child(2) > .UnderlineNav-item",
+      "targets": [
+        ["css=.d-flex:nth-child(2) > .UnderlineNav-item", "css:finder"],
+        ["xpath=//a[contains(@href, '/orgs/IBM/repositories')]", "xpath:href"],
+        ["xpath=//nav/div/ul/li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "60135a5c-6aee-4b9b-86a5-d9d0fa41deb7",
+      "comment": "",
+      "command": "pause",
+      "target": "5000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8c9ce3b0-7228-4d7b-bb0d-b29ad6a08f58",
+      "comment": "",
+      "command": "click",
+      "target": "css=.d-flex:nth-child(3) > .UnderlineNav-item",
+      "targets": [
+        ["css=.d-flex:nth-child(3) > .UnderlineNav-item", "css:finder"],
+        ["xpath=//a[contains(@href, '/orgs/IBM/projects')]", "xpath:href"],
+        ["xpath=//nav/div/ul/li[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c165d2de-c57c-4df9-8a34-c3b56d833092",
+      "comment": "",
+      "command": "click",
+      "target": "id=project-search-input",
+      "targets": [
+        ["id=project-search-input", "id"],
+        ["name=query", "name"],
+        ["css=#project-search-input", "css:finder"],
+        ["xpath=//input[@id='project-search-input']", "xpath:attributes"],
+        ["xpath=//primer-text-field/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "98d05449-2302-4526-8d92-04404c4569fd",
+      "comment": "",
+      "command": "click",
+      "target": "id=project-search-input",
+      "targets": [
+        ["id=project-search-input", "id"],
+        ["name=query", "name"],
+        ["css=#project-search-input", "css:finder"],
+        ["xpath=//input[@id='project-search-input']", "xpath:attributes"],
+        ["xpath=//primer-text-field/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eaeabccd-47f4-4c9b-aab6-6b9396e319df",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "id=project-search-input",
+      "targets": [
+        ["id=project-search-input", "id"],
+        ["name=query", "name"],
+        ["css=#project-search-input", "css:finder"],
+        ["xpath=//input[@id='project-search-input']", "xpath:attributes"],
+        ["xpath=//primer-text-field/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a34994de-ace5-4c08-8295-0cb67b256add",
+      "comment": "",
+      "command": "click",
+      "target": "id=project-search-input",
+      "targets": [
+        ["id=project-search-input", "id"],
+        ["name=query", "name"],
+        ["css=#project-search-input", "css:finder"],
+        ["xpath=//input[@id='project-search-input']", "xpath:attributes"],
+        ["xpath=//primer-text-field/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "68df3686-6230-4ab4-ae36-afeffef74899",
+      "comment": "",
+      "command": "click",
+      "target": "id=project-search-input",
+      "targets": [
+        ["id=project-search-input", "id"],
+        ["name=query", "name"],
+        ["css=#project-search-input", "css:finder"],
+        ["xpath=//input[@id='project-search-input']", "xpath:attributes"],
+        ["xpath=//primer-text-field/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d09c4bb6-e4a2-4f88-80ad-58ea404d82bd",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "id=project-search-input",
+      "targets": [
+        ["id=project-search-input", "id"],
+        ["name=query", "name"],
+        ["css=#project-search-input", "css:finder"],
+        ["xpath=//input[@id='project-search-input']", "xpath:attributes"],
+        ["xpath=//primer-text-field/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f9f152b9-32e7-4c23-9688-29fd80c8f978",
+      "comment": "",
+      "command": "click",
+      "target": "id=project-search-input",
+      "targets": [
+        ["id=project-search-input", "id"],
+        ["name=query", "name"],
+        ["css=#project-search-input", "css:finder"],
+        ["xpath=//input[@id='project-search-input']", "xpath:attributes"],
+        ["xpath=//primer-text-field/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4427af45-3b07-4354-9da8-4d9c6a78d6ad",
+      "comment": "",
+      "command": "click",
+      "target": "css=.d-flex:nth-child(2) > .UnderlineNav-item",
+      "targets": [
+        ["css=.d-flex:nth-child(2) > .UnderlineNav-item", "css:finder"],
+        ["xpath=//a[contains(@href, '/orgs/IBM/repositories')]", "xpath:href"],
+        ["xpath=//nav/div/ul/li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "028e82b8-9dbe-4350-8f9f-8b3d2eb916a0",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=repos-list-filter-input",
+      "targets": [
+        ["id=repos-list-filter-input", "id"],
+        ["name=repos-list-filter-inputname", "name"],
+        ["css=#repos-list-filter-input", "css:finder"],
+        ["xpath=//input[@id='repos-list-filter-input']", "xpath:attributes"],
+        ["xpath=//div[@id='repos-list-filter']/div/div/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "028e82b8-9dbe-4350-8f9f-8b3d2eb916a0",
+      "comment": "",
+      "command": "click",
+      "target": "id=repos-list-filter-input",
+      "targets": [
+        ["id=repos-list-filter-input", "id"],
+        ["name=repos-list-filter-inputname", "name"],
+        ["css=#repos-list-filter-input", "css:finder"],
+        ["xpath=//input[@id='repos-list-filter-input']", "xpath:attributes"],
+        ["xpath=//div[@id='repos-list-filter']/div/div/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "60135a5c-6aee-4b9b-86a5-d9d0fa41deb2",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "id=suggestion-0--label",
+      "targets": [],
+      "value": "10000"
+    }, {
+      "id": "60135a5c-6aee-4b9b-86a5-d9d0fa41deb1",
+      "comment": "",
+      "command": "type",
+      "target": "id=repos-list-filter-input",
+      "targets": [
+        ["id=repos-list-filter-input", "id"],
+        ["name=repos-list-filter-inputname", "name"],
+        ["css=#repos-list-filter-input", "css:finder"],
+        ["xpath=//input[@id='repos-list-filter-input']", "xpath:attributes"],
+        ["xpath=//div[@id='repos-list-filter']/div/div/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div[2]/input", "xpath:position"]
+      ],
+      "value": "instana"
+    }, {
+      "id": "d0239041-5bdf-42be-b920-c5055628f161",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=repos-list-filter-input",
+      "targets": [
+        ["id=repos-list-filter-input", "id"],
+        ["name=repos-list-filter-inputname", "name"],
+        ["css=#repos-list-filter-input", "css:finder"],
+        ["xpath=//input[@id='repos-list-filter-input']", "xpath:attributes"],
+        ["xpath=//div[@id='repos-list-filter']/div/div/div/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "e05cf436-b3fa-43ad-918e-524d480ebad3",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//span[contains(.,'instana-techxchange')]",
+      "targets": [
+        ["xpath=//li[@id=':R5ab:-list-view-node-:re:']/div/h4/a/span", "xpath:idRelative"],
+        ["xpath=//h4/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'instana-techxchange')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3af4d8db-00a2-4e3b-9021-f38e4d212de0",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "1c4cb314-4132-4746-81d3-1431df107c2f",
+    "name": "GitHub Search",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["0a60002f-7f4c-4adf-bd90-46d76850603f"]
+  }],
+  "urls": [],
+  "plugins": []
+}
