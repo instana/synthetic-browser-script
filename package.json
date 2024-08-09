@@ -1,6 +1,6 @@
 {
   "name": "@instana/synthetic-browser-script",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "A local runner to test and debug your browser scripts locally with CLI",
   "main": "dist/sbs-playback.js",
   "typings": "dist/src/main.d.ts",
@@ -49,7 +49,7 @@
     "email": "support@instana.com"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.350.0",
+    "@aws-sdk/client-s3": "^3.529.0",
     "@cucumber/cucumber": "7.3.2",
     "atob": "^2.1.2",
     "authenticator": "^1.1.5",
