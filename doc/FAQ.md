@@ -1,3 +1,12 @@
+
+---
+**NOTE**
+
+FAQ has been migrated to [Instana public documentation](https://www.ibm.com/docs/en/instana-observability/current?topic=scripts-frequently-asked-questions).
+
+---
+
+
 # Frequently Asked Questions
 - [Frequently Asked Questions](#frequently-asked-questions)
   - [🌟 Why a Selenium recorded script may not run successfully in Instana](#-why-a-selenium-recorded-script-may-not-run-successfully-in-instana)
