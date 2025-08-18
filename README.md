@@ -1,6 +1,6 @@
 # Instana Synthetic Browser Script
 
-[![Node Support](https://img.shields.io/badge/node-18.x-brightgreen.svg)](https://www.npmjs.com/package/%40instana/synthetic-browser-script)
+[![Node Support](https://img.shields.io/badge/node-22.x-brightgreen.svg)](https://www.npmjs.com/package/%40instana/synthetic-browser-script)
 [![Selenium Support](https://img.shields.io/badge/selenium-4.x-brightgreen.svg)](https://www.selenium.dev/selenium/docs/api/javascript/module/selenium-webdriver/lib/webdriver_exports_WebDriver.html)
 
 [![Banner](doc/imgs/sbs-banner.png)](https://www.ibm.com/docs/en/instana-observability/current?topic=monitoring-using-browser-scripts)
@@ -46,8 +46,8 @@ Chromium, Mozilla Firefox, Node.js runtime.
 
 ☑️ Google Chrome / Chromium<br>
 ☑️ Mozilla Firefox<br>
-☑️ Node.js v18.x<br>
-☑️ selenium-webdriver v4.20.0
+☑️ Node.js v22.x<br>
+☑️ selenium-webdriver v4.35.0
 
 
 ## 🍀 Pre-requisite
@@ -65,18 +65,18 @@ The rest of the steps described in this document can now be performed on your Li
 
 You can use [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) to install Node.js if you don't have one.
 
-Node.js v18 is recommended. 
+Node.js v22 is recommended. 
 
 ```bash
-nvm install v18.19.1
+nvm install v22.12.0
 
 node --version
-v18.19.1
+v22.12.0
 
 # if you have multiple versions of Node.js installed, you can switch Node.js version with nvm
 nvm list
-nvm alias default v18.19.1
-nvm use v18.19.1
+nvm alias default v22.12.0
+nvm use v22.12.0
 ```
 
 ## 🚀 Get started in 60 seconds
@@ -124,6 +124,7 @@ npx synb --version
 
 Use CLI `npx synb` to execute. 
 Use `-b` to specify the browser type (chrome is by default without this option).
+Use `--isNewEngine=true` flag if your chrome browser version is greater than v126.0.0.
 Use `-f` to specify the entry point of the javascript test scripts. 
 
 ```bash
