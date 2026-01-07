@@ -26,7 +26,8 @@
   },
   "scripts": {
     "test": "synb --help",
-    "start": "synb --file examples/bundledscripts/mytest.js"
+    "start": "synb --file examples/bundledscripts/mytest.js",
+    "postinstall": "node dist/download-chrome.js"
   },
   "publishConfig": {
     "access": "public"
