@@ -221,23 +221,23 @@ async function main() {
   console.log('Cache directory:', getCacheDir());
   
   try {
-    // Fetch latest stable Chrome version
-    const latestVersion = await fetchLatestChromeVersion();
-    
+    // Use Chrome version 138
+    const targetVersion = '138.0.7152.0';
+
     // Check if we already have this version
     const cachedVersion = loadCachedVersion();
-    
-    if (cachedVersion === latestVersion) {
-      console.log(`\nLatest Chrome version ${latestVersion} is already downloaded.`);
+
+    if (cachedVersion === targetVersion) {
+      console.log(`\nChrome version ${targetVersion} is already downloaded.`);
       console.log('Skipping download.');
     } else {
-      console.log(`\nDownloading latest Chrome version: ${latestVersion}`);
-      
-      // Download the latest version
-      await downloadChrome(latestVersion);
-      
+      console.log(`\nDownloading Chrome version: ${targetVersion}`);
+
+      // Download the specified version
+      await downloadChrome(targetVersion);
+
       // Save the version to cache
-      saveVersion(latestVersion);
+      saveVersion(targetVersion);
       
       console.log('\n=== Chrome downloaded successfully ===');
     }
