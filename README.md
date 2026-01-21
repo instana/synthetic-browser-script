@@ -122,9 +122,8 @@ npx synb --help
 npx synb --version
 ``` 
 
-Use CLI `npx synb` to execute. 
+Use CLI `npx synb --isLocalRun true` to execute. 
 Use `-b` to specify the browser type (chrome is by default without this option).
-Use `--isNewEngine=true` flag if your chrome browser version is greater than v126.0.0.
 Use `-f` to specify the entry point of the javascript test scripts. 
 
 ```bash
